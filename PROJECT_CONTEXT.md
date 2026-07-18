@@ -177,7 +177,8 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - Provide a normal name/email/message feedback form using Web3Forms.
 - The Web3Forms access key supplied by Rahul must **not** be written in this document, committed to Git, repeated in messages, or placed in a public source file.
 - Configure it through `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` locally and as a GitHub repository Actions secret for builds. Important: because GitHub Pages is static, any browser-based form service key is ultimately visible in the built client; this is expected for Web3Forms access keys, but it is not a private server secret.
-- Before deployment, add the Web3Forms domain allow-list entry for `rahulrathnavel.dev` and configure the GitHub Actions secret.
+- The GitHub Actions secret `WEB3FORMS_ACCESS_KEY` was configured on 2026-07-18 without committing the value.
+- Do not send a fake automated enquiry as a test. After deployment, submit one genuine message from the live site to confirm the Web3Forms account's current domain policy and delivery behavior.
 
 ## Current build status
 
@@ -194,7 +195,9 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - [x] Added GitHub Pages static-export configuration, CNAME, and deployment workflow.
 - [x] Added the Web3Forms GitHub Actions secret without committing it.
 - [x] Tested desktop and mobile layouts, key interactions, tour progression, arcade progression, lint, and production build locally.
-- [ ] Push the first release, create the GitHub Pages site, and verify the deployed domain and Web3Forms domain settings.
+- [x] Pushed the first release, created the GitHub Pages site in workflow mode, and verified `https://rahulrathnavel.dev` with HTTPS enforced.
+- [x] Confirmed the deployed `/`, `/tour/`, and `/arcade/` routes after the successful GitHub Actions run.
+- [ ] Submit one genuine live enquiry after launch to verify Web3Forms delivery; do not use an automated fake contact submission.
 
 ## Handoff instructions for future contributors / sessions
 
