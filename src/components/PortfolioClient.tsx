@@ -3,6 +3,7 @@
 
 import ContactForm from "@/components/ContactForm";
 import ModelPortrait from "@/components/ModelPortrait";
+import { portraitModels } from "@/config/portraitModels";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -218,14 +219,14 @@ export default function PortfolioClient() {
           className="portrait-stage"
         >
           <span className="portrait-label">Rahul / field mode</span>
-          <span className="portrait-cursor">Drag to look</span>
+          <span className="portrait-cursor">Move around me</span>
           <span className="portrait-glow" />
           <ModelPortrait
-            alt="Stylized 3D portrait of Rahul Rathnavel"
-            cameraOrbit="-12deg 78deg 108%"
+            alt={portraitModels.hero.alt}
+            cameraOrbit={portraitModels.hero.cameraOrbit}
             className="hero-model"
             loading="eager"
-            src="/assets/models/rahul-blue-wall-selfie.glb"
+            src={portraitModels.hero.src}
           />
           <label className="signal-slider">
             <Sun size={15} />
@@ -478,10 +479,10 @@ export default function PortfolioClient() {
             <aside className="contact-sidekick">
               <p>“Let&apos;s discuss software, LLMs where they fail… and maybe cinema.”</p>
               <ModelPortrait
-                alt="Stylized 3D portrait of Rahul giving two thumbs up"
-                cameraOrbit="16deg 78deg 105%"
+                alt={portraitModels.contact.alt}
+                cameraOrbit={portraitModels.contact.cameraOrbit}
                 className="contact-model"
-                src="/assets/models/rahul-two-thumbs-up.glb"
+                src={portraitModels.contact.src}
               />
             </aside>
           </div>

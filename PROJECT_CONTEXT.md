@@ -160,6 +160,8 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - The main site uses Rahul-supplied, stylized Meshy GLB avatars as interactive 3D viewers: the blue-wall selfie in the hero and the two-thumbs-up pose in Contact. Treat them as personal illustrations/avatars, never as a claim of photogrammetric accuracy.
 - A 60-second head-rotation video is available at `R:\portfolio\selfie video of rotating my head closeup left right up down 60 seconds.mp4`. It may inform future motion/reference work, but it does not justify claiming that a portrait is a genuine 3D scan.
 - The model viewers must remain an optional enhancement: keyboard-readable copy, the contact form, and no-WebGL fallback messaging must stay usable.
+- To replace either avatar later, copy the new `.glb` into `public/assets/models/` and change only the matching `src` in `src/config/portraitModels.ts`.
+- `ModelPortrait.tsx` gives the avatars a subtle cursor-follow camera parallax. It is not a claim that the static GLBs contain eye or head animation; keep the effect restrained and honor `prefers-reduced-motion`.
 
 ## Technical decisions
 
