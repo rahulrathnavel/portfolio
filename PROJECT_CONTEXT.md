@@ -197,7 +197,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - [x] Tested desktop and mobile layouts, key interactions, tour progression, arcade progression, lint, and production build locally.
 - [x] Pushed the first release, created the GitHub Pages site in workflow mode, and verified `https://rahulrathnavel.dev` with HTTPS enforced.
 - [x] Confirmed the deployed `/`, `/tour/`, and `/arcade/` routes after the successful GitHub Actions run.
-- [ ] Integrate and deploy the Rahul-specific `/game-tour/` MIT derivative, replace the main-site guided-tour links, and verify it after GitHub Pages publishes.
+- [x] Integrated and deployed the Rahul-specific `/game-tour/` MIT derivative, replaced the main-site guided-tour links, and verified it on `https://rahulrathnavel.dev/game-tour/` after GitHub Pages published.
 - [ ] Submit one genuine live enquiry after launch to verify Web3Forms delivery; do not use an automated fake contact submission.
 
 ## Handoff instructions for future contributors / sessions
