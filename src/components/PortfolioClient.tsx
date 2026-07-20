@@ -2,6 +2,7 @@
 "use client";
 
 import ContactForm from "@/components/ContactForm";
+import ModelPortrait from "@/components/ModelPortrait";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -10,8 +11,8 @@ import {
   Route,
   Sun,
 } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { CSSProperties, MouseEvent, useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { CSSProperties, useEffect, useState } from "react";
 
 type Language = "en" | "ta";
 type Sidekick = "think" | "approved" | null;
@@ -102,21 +103,12 @@ export default function PortfolioClient() {
   const [greetingLevel, setGreetingLevel] = useState(0);
   const [isBooting, setIsBooting] = useState(true);
   const [night, setNight] = useState(12);
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [sidekick, setSidekick] = useState<Sidekick>(null);
-  const reducedMotion = useReducedMotion();
   const text = strings[language];
 
   useEffect(() => {
     let active = true;
-    const portrait = new window.Image();
-    portrait.src = "/assets/portraits/rahul-presents.png";
-
-    const ready = Promise.all([
-      document.fonts?.ready ?? Promise.resolve(),
-      portrait.decode().catch(() => undefined),
-    ]);
-    ready.finally(() => {
+    (document.fonts?.ready ?? Promise.resolve()).finally(() => {
       if (active) setIsBooting(false);
     });
 
@@ -124,22 +116,6 @@ export default function PortfolioClient() {
       active = false;
     };
   }, []);
-
-  const portraitTransform = useMemo(
-    () => ({
-      transform: `translate3d(${pointer.x * 0.65}px, ${pointer.y * 0.65}px, 0) rotate(${pointer.x * 0.12}deg)`,
-    }),
-    [pointer],
-  );
-
-  function onPortraitMove(event: MouseEvent<HTMLElement>) {
-    if (reducedMotion) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPointer({
-      x: ((event.clientX - rect.left) / rect.width - 0.5) * 18,
-      y: ((event.clientY - rect.top) / rect.height - 0.5) * 18,
-    });
-  }
 
   function showSidekick(kind: Exclude<Sidekick, null>) {
     setSidekick(kind);
@@ -240,13 +216,17 @@ export default function PortfolioClient() {
         <section
           aria-label="Interactive portrait of Rahul Rathnavel"
           className="portrait-stage"
-          onMouseLeave={() => setPointer({ x: 0, y: 0 })}
-          onMouseMove={onPortraitMove}
         >
           <span className="portrait-label">Rahul / field mode</span>
-          <span className="portrait-cursor">Move gently</span>
+          <span className="portrait-cursor">Drag to look</span>
           <span className="portrait-glow" />
-          <img alt="Rahul Rathnavel presenting his work" className="portrait-art" src="/assets/portraits/rahul-presents.png" style={portraitTransform} />
+          <ModelPortrait
+            alt="Stylized 3D portrait of Rahul Rathnavel"
+            cameraOrbit="-12deg 78deg 108%"
+            className="hero-model"
+            loading="eager"
+            src="/assets/models/rahul-blue-wall-selfie.glb"
+          />
           <label className="signal-slider">
             <Sun size={15} />
             <input
@@ -497,7 +477,12 @@ export default function PortfolioClient() {
             </div>
             <aside className="contact-sidekick">
               <p>“Let&apos;s discuss software, LLMs where they fail… and maybe cinema.”</p>
-              <img alt="Rahul giving a thumbs up" src="/assets/portraits/rahul-approved.jpeg" />
+              <ModelPortrait
+                alt="Stylized 3D portrait of Rahul giving two thumbs up"
+                cameraOrbit="16deg 78deg 105%"
+                className="contact-model"
+                src="/assets/models/rahul-two-thumbs-up.glb"
+              />
             </aside>
           </div>
         </section>

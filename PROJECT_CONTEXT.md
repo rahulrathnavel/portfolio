@@ -157,14 +157,14 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 
 ## Portrait direction
 
-- Use the high-quality 2.5D interactive portrait approach, not a fake AI-generated 3D face.
-- A 60-second head-rotation video is available at `R:\portfolio\selfie video of rotating my head closeup left right up down 60 seconds.mp4`. It may inform motion/reference work, but it does not justify claiming that the portrait is a genuine 3D model.
-- If a true 3D portrait is later desired, acquire a clean scan or a deliberate multi-angle photogrammetry capture.
+- The main site uses Rahul-supplied, stylized Meshy GLB avatars as interactive 3D viewers: the blue-wall selfie in the hero and the two-thumbs-up pose in Contact. Treat them as personal illustrations/avatars, never as a claim of photogrammetric accuracy.
+- A 60-second head-rotation video is available at `R:\portfolio\selfie video of rotating my head closeup left right up down 60 seconds.mp4`. It may inform future motion/reference work, but it does not justify claiming that a portrait is a genuine 3D scan.
+- The model viewers must remain an optional enhancement: keyboard-readable copy, the contact form, and no-WebGL fallback messaging must stay usable.
 
 ## Technical decisions
 
 - Framework: Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 4.
-- Interaction support: Motion and Lucide icons. Avoid heavy 3D libraries in the initial recruiter experience.
+- Interaction support: Motion, Lucide icons, and `@google/model-viewer` for the two user-requested GLB portraits (hero eager, Contact lazy). Do not add new 3D scenes to the main recruiter path without an explicit request.
 - Deployment target: GitHub Pages static export, custom domain `rahulrathnavel.dev`.
 - Add `public/CNAME` containing `rahulrathnavel.dev` for GitHub Pages.
 - Use a GitHub Actions workflow to build and deploy the static export.
