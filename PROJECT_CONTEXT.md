@@ -12,8 +12,8 @@ This is not a template portfolio and must never become generic "AI slop." The in
 - Avoid stock AI language, generic purple gradients, decorative emojis, fake loading delays, copied layouts, and empty buzzwords.
 - The main experience must remain fast, readable, responsive, keyboard-accessible, and useful without interaction, animation, sound, or a powerful device.
 - Motion, sound, games, and surprises are optional layers of character. They must not block a recruiter from seeing projects, the resume, or contact details.
-- All outbound links open in a new tab with `target="_blank"` and `rel="noreferrer"`. The resume, live demos, Take a Tour, and RR Arcade also open in a new tab. Main-site navigation stays in the current tab.
-- Do not copy any reference website's source code, assets, character designs, exact visual language, or game mechanics. Learn from the interaction principles and build an original response.
+- All outbound links open in a new tab with `target="_blank"` and `rel="noreferrer"`. The resume, live demos, and Game Tour also open in a new tab. Main-site navigation stays in the current tab.
+- Do not copy proprietary or unlicensed source code, assets, character designs, or claims. The `/game-tour/` experience is an intentional exception: it is a Rahul-specific derivative of the MIT-licensed `brunosimon/folio-2019` project. Its original MIT license and `DERIVATIVE_NOTICE.md` must stay in `game-tour/`.
 - Do not publish private source material, raw certificates, unverified reports, credentials, API keys, or contact-service keys.
 
 ## Audience and communication strategy
@@ -36,12 +36,12 @@ One authored site, not multiple duplicate templates:
 
 1. **Quick Brief** - the immediate recruiter path.
 2. **Field Notes** - the main scrolling portfolio, with project stories and evidence.
-3. **Take a Tour** - an optional, original interactive route in a new tab.
-4. **RR Arcade** - a separate, optional game page in a new tab.
+3. **Game Tour** - an optional, keyboard-driven 3D driving experience in a new tab at `/game-tour/`, using Rahul's work, profile, links, and proof points.
+4. **RR Arcade** - a legacy separate optional game page that is not currently linked from the main experience.
 
 ### Core visual idea
 
-Use an original "RR Signal Route" visual language: technical diagrams, route markers, editorial typography, tangible evidence, controlled kinetic type, and an interactive portrait. It may use a lightweight 2D/2.5D map or rover, but must not imitate Bruno Simon's 3D driving world.
+Use the original "RR Signal Route" visual language for the main site: technical diagrams, route markers, editorial typography, tangible evidence, controlled kinetic type, and an interactive portrait. The separate Game Tour may retain its upstream MIT-licensed driving-world interaction, but must always present Rahul's own details and retain attribution.
 
 ### Approved personality details
 
@@ -169,7 +169,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - Add `public/CNAME` containing `rahulrathnavel.dev` for GitHub Pages.
 - Use a GitHub Actions workflow to build and deploy the static export.
 - Keep the code repository at `https://github.com/rahulrathnavel/portfolio`.
-- Keep optional interactive content in separate routes such as `/tour` and `/arcade`; open those from the main site in new tabs.
+- Keep optional interactive content in separate routes such as `/game-tour/`; open them from the main site in new tabs. The GitHub Pages workflow must run `npm ci` and `npm run build` in `game-tour/` before the Next.js build so that `public/game-tour/` is generated and exported.
 
 ## Contact form and privacy
 
@@ -197,6 +197,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - [x] Tested desktop and mobile layouts, key interactions, tour progression, arcade progression, lint, and production build locally.
 - [x] Pushed the first release, created the GitHub Pages site in workflow mode, and verified `https://rahulrathnavel.dev` with HTTPS enforced.
 - [x] Confirmed the deployed `/`, `/tour/`, and `/arcade/` routes after the successful GitHub Actions run.
+- [ ] Integrate and deploy the Rahul-specific `/game-tour/` MIT derivative, replace the main-site guided-tour links, and verify it after GitHub Pages publishes.
 - [ ] Submit one genuine live enquiry after launch to verify Web3Forms delivery; do not use an automated fake contact submission.
 
 ## Handoff instructions for future contributors / sessions

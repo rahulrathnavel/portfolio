@@ -6,7 +6,6 @@ import {
   ArrowDown,
   ArrowUpRight,
   Code2,
-  Gamepad2,
   Moon,
   Route,
   Sun,
@@ -46,7 +45,7 @@ const strings = {
     intro:
       "Rahul is an applied AI/ML engineer who turns messy problems into working products — from resilient cloud operations and multimodal RAG to offline accessibility tools.",
     work: "See selected work",
-    tour: "Take the signal route",
+    tour: "Drive the game tour",
     proof: "Evidence, not noise",
     proofTitle: "The work has receipts.",
     proofIntro: "Awards matter. Working prototypes, merged PRs, and repeatable technical decisions matter more.",
@@ -67,7 +66,7 @@ const strings = {
     intro:
       "Rahul oru applied AI/ML engineer. Confusing problem-a working product-aa maathradhu dhaan main work — cloud incidents-la irundhu offline accessibility tools varaikkum.",
     work: "Best work paarunga",
-    tour: "Signal route-la polaam",
+    tour: "Game tour-la polaam",
     proof: "Proof irukku, noise illa",
     proofTitle: "Idhellam real evidence.",
     proofIntro: "Awards nalla vishayam. Aana working prototype, merged PR, and clear technical decisions innum strong.",
@@ -227,7 +226,7 @@ export default function PortfolioClient() {
             <a className="button signal" href="#work">
               {text.work} <ArrowDown size={16} />
             </a>
-            <a className="button secondary" href="/tour" rel="noreferrer" target="_blank">
+            <a className="button secondary" href="/game-tour/" rel="noreferrer" target="_blank">
               <Route size={16} /> {text.tour}
             </a>
           </div>
@@ -404,15 +403,12 @@ export default function PortfolioClient() {
         <section className="section route-section">
           <div className="route-card">
             <div>
-              <p className="section-kicker">Optional detour</p>
-              <h2>Prefer a guided tour?</h2>
-              <p className="section-intro">Take the RR Signal Route: a light, keyboard-friendly interactive map of the work, timeline, and proof points. It opens separately, so this page stays exactly where you left it.</p>
+              <p className="section-kicker">Interactive detour</p>
+              <h2>Drive through the work.</h2>
+              <p className="section-intro">Take Rahul&apos;s interactive game tour: a keyboard-friendly 3D world of the work, timeline, and proof points. It opens separately, so this page stays exactly where you left it.</p>
               <div className="hero-actions">
-                <a className="button signal" href="/tour" rel="noreferrer" target="_blank">
-                  <Route size={16} /> Open Take a Tour
-                </a>
-                <a className="button secondary" href="/arcade" rel="noreferrer" target="_blank">
-                  <Gamepad2 size={16} /> RR Arcade
+                <a className="button signal" href="/game-tour/" rel="noreferrer" target="_blank">
+                  <Route size={16} /> Open game tour
                 </a>
               </div>
             </div>
