@@ -16,7 +16,6 @@
     "dat.gui": "^0.7.9",
     "gsap": "^3.12.5",
     "howler": "^2.2.4",
-    "three": "^0.164.1",
-    "vite-plugin-restart": "^0.4.0"
+    "three": "^0.164.1"
   }
 }
