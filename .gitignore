@@ -19,7 +19,6 @@
 
 # production
 /build
-/public/game-tour/
 
 # misc
 .DS_Store

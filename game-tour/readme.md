@@ -4,7 +4,7 @@ An interactive Three.js portfolio world for Rahul Rathnavel: applied AI/ML syste
 
 This is a lawful MIT-licensed derivative of `brunosimon/folio-2019`. The original MIT license remains intact in [license.md](./license.md); see [DERIVATIVE_NOTICE.md](./DERIVATIVE_NOTICE.md) for the adaptation record.
 
-The production build is published beneath `/game-tour/` by the parent portfolio's GitHub Pages workflow. Large Blender authoring files remain local; the optimized runtime models and assets needed to play the tour are included in `static/`.
+The production build is published beneath `/game-tour/` by the parent portfolio. The verified output in `../public/game-tour/` is committed with the static site so GitHub Pages can publish it directly. Large Blender authoring files remain local; the optimized runtime models and assets needed to play the tour are included in `static/`.
 
 ## Run locally
 
@@ -27,3 +27,5 @@ Drive to the right-hand project road to open nine Rahul-specific project station
 npm run build
 npm run preview
 ```
+
+Before pushing a game-tour change, rebuild it from this folder and commit the refreshed `../public/game-tour/` output with the source change.

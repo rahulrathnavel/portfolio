@@ -15,7 +15,7 @@ export default {
     {
         outDir: '../../public/game-tour', // Published by the parent Next.js static export
         emptyOutDir: true, // Empty the folder first
-        sourcemap: true // Add sourcemap
+        sourcemap: false // Keep the public static deployment lean
     },
     plugins:
     [

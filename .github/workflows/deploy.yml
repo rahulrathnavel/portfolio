@@ -31,12 +31,6 @@ jobs:
           cache: pnpm
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Install game tour dependencies
-        working-directory: game-tour
-        run: npm ci
-      - name: Build interactive game tour
-        working-directory: game-tour
-        run: npm run build
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build static site

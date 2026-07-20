@@ -169,7 +169,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - Add `public/CNAME` containing `rahulrathnavel.dev` for GitHub Pages.
 - Use a GitHub Actions workflow to build and deploy the static export.
 - Keep the code repository at `https://github.com/rahulrathnavel/portfolio`.
-- Keep optional interactive content in separate routes such as `/game-tour/`; open them from the main site in new tabs. The GitHub Pages workflow must run `npm ci` and `npm run build` in `game-tour/` before the Next.js build so that `public/game-tour/` is generated and exported.
+- Keep optional interactive content in separate routes such as `/game-tour/`; open them from the main site in new tabs. The verified static runtime output in `public/game-tour/` is versioned with the site because GitHub Pages publishes a static export. After changing `game-tour/`, run `npm ci` and `npm run build` there locally, then commit the refreshed `public/game-tour/` output before deploying.
 
 ## Contact form and privacy
 
