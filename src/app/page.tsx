@@ -1,5 +1,5 @@
-import PortfolioClient from "@/components/PortfolioClient";
+import DesktopShell from "@/components/workstation/DesktopShell";
 
 export default function Home() {
-  return <PortfolioClient />;
+  return <DesktopShell />;
 }

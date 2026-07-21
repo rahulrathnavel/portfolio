@@ -34,23 +34,31 @@ Clear English first, warm and human, slightly playful, never childish. Tamil mod
 
 One authored site, not multiple duplicate templates:
 
-1. **Quick Brief** - the immediate recruiter path.
-2. **Field Notes** - the main scrolling portfolio, with project stories and evidence.
-3. **Game Tour** - an optional, keyboard-driven 3D driving experience in a new tab at `/game-tour/`, using Rahul's work, profile, links, and proof points.
-4. **RR Arcade** - a legacy separate optional game page that is not currently linked from the main experience.
+1. **RR Workstation** - the primary experience at `/`: a focused desktop-style portfolio with a Start Here brief, work, proof, resume, contact, settings, and an optional Game Tour launcher.
+2. **Compact Workstation** - the same evidence and contact path, purpose-designed for touch devices and narrower screens rather than shrinking desktop windows.
+3. **Game Tour** - an optional 3D driving experience in a new tab at `/game-tour/`. It is a playful route into the work, never a prerequisite for understanding it.
 
 ### Core visual idea
 
-Use the original "RR Signal Route" visual language for the main site: technical diagrams, route markers, editorial typography, tangible evidence, controlled kinetic type, and an interactive portrait. The separate Game Tour may retain its upstream MIT-licensed driving-world interaction, but must always present Rahul's own details and retain attribution.
+Use an original "RR Workstation" visual language for the main site: a considered desktop surface, clear window hierarchy, Start menu, taskbar, evidence-led app windows, technical diagrams, and an interactive portrait. It borrows the *desktop interaction pattern* from the MIT-licensed daedalOS project without copying its operating-system source, virtual filesystem, emulator suite, or unnecessary app bloat. The separate Game Tour may retain its MIT-licensed driving-world interaction, but must always present Rahul's own details and retain attribution.
+
+## RR Workstation architecture
+
+- `src/components/workstation/DesktopShell.tsx` owns desktop-window state, app launch/focus/minimize/close behavior, Start menu, taskbar, keyboard shortcuts, and the compact-layout fallback.
+- `src/components/workstation/PortfolioApps.tsx` renders the factual portfolio applications. It must not independently invent data.
+- `src/config/portfolioData.ts` is the central public claims/links source. Update facts there first, then let every view consume the same record.
+- `src/config/portraitModels.ts` is the only path map for the two user-supplied GLB portraits. To replace an avatar, copy a new `.glb` to `public/assets/models/` and change only the matching `src` value in that file.
+- `game-tour/` is its own Vite/Three.js source project. `npm run build` writes its deployable static runtime to `public/game-tour/`, which the parent Next.js static export carries to GitHub Pages.
+- `public/CREDITS.md` documents third-party inspiration and license obligations. Keep it visible from Control Center.
 
 ### Approved personality details
 
 - Short RR hexagon loader, only while the app actually initializes. It must be skippable / not artificially prolonged.
-- An interactive portrait reacts subtly to pointer movement and scroll position.
+- An interactive portrait reacts subtly to pointer movement. It is a stylized static GLB camera-parallax effect, not a claim of facial animation or a photogrammetric 3D scan.
 - Rahul's three sidekick images may appear only when useful: a presenter for discoveries, a "think" reaction for deliberate playful interactions, and a thumbs-up for successful completion.
 - A small, clearly optional easter egg can react when a visitor clicks an intentionally non-functional control. It must be non-blocking and respect reduced-motion preferences.
 - Sound is muted by default. It may only play after an explicit visitor action. Include a visible mute control in interactive experiences.
-- In Tamil mode, show `வணக்கம் நண்பா`. A discoverable double tap can change it to `வணக்கம் டா மாப்ள!`.
+- In Tamil mode, use friendly conversational Tamil mixed naturally with familiar English technical words. The welcome greeting can double-tap into the more playful `வணக்கம் da மாப்ள!` state; it must remain a small optional detail, not a recruiter obstacle.
 - A long idle period may create a night-mode change only inside Take a Tour, never while someone is reading the main portfolio.
 
 ## Confirmed professional positioning
@@ -166,7 +174,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 ## Technical decisions
 
 - Framework: Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 4.
-- Interaction support: Motion, Lucide icons, and `@google/model-viewer` for the two user-requested GLB portraits (hero eager, Contact lazy). Do not add new 3D scenes to the main recruiter path without an explicit request.
+- Interaction support: React RND for carefully bounded desktop windows, Lucide icons, and `@google/model-viewer` for the two user-requested GLB portraits (lazy on the recruiter path). Do not add new 3D scenes to the main recruiter path without an explicit request.
 - Deployment target: GitHub Pages static export, custom domain `rahulrathnavel.dev`.
 - Add `public/CNAME` containing `rahulrathnavel.dev` for GitHub Pages.
 - Use a GitHub Actions workflow to build and deploy the static export.
@@ -189,24 +197,24 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - [x] Scaffolded a Next.js 16, React 19, TypeScript, Tailwind application.
 - [x] Selected safe public assets and copied them into the application.
 - [x] Installed Motion and Lucide icon dependencies.
-- [x] Built the main recruiter-first portfolio.
-- [x] Built bilingual English/Tamil content, the friendly double-tap greeting, and light-level control.
+- [x] Replaced the prior scrolling portfolio, Take a Tour route, and RR Arcade route with the RR Workstation primary experience.
+- [x] Built recruiter-first Start Here, Work, Proof, Resume, Contact, Control Center, and optional Game Tour applications from one factual content source.
+- [x] Built the responsive compact Workstation for touch/narrow displays instead of forcing desktop windows onto small screens.
 - [x] Built project stories, proof gallery, private-work framing, and the new-tab external-link policy.
-- [x] Built the optional Take a Tour route.
-- [x] Built the original 10-level RR Arcade route.
 - [x] Added GitHub Pages static-export configuration, CNAME, and deployment workflow.
 - [x] Added the Web3Forms GitHub Actions secret without committing it.
-- [x] Tested desktop and mobile layouts, key interactions, tour progression, arcade progression, lint, and production build locally.
+- [x] Tested desktop and mobile layouts, key interactions, guided Game Tour controls, lint, and production build locally.
 - [x] Pushed the first release, created the GitHub Pages site in workflow mode, and verified `https://rahulrathnavel.dev` with HTTPS enforced.
-- [x] Confirmed the deployed `/`, `/tour/`, and `/arcade/` routes after the successful GitHub Actions run.
-- [x] Integrated and deployed the Rahul-specific `/game-tour/` MIT derivative, replaced the main-site guided-tour links, and verified it on `https://rahulrathnavel.dev/game-tour/` after GitHub Pages published.
+- [x] Integrated the Rahul-specific `/game-tour/` MIT derivative and connected it as the optional RR Game Tour application.
+- [x] Added a visible mouse/touch drive pad, reset control, guided mode, muted-by-default sound, calmer physics, and desktop deep links to the Game Tour source.
+- [ ] Verify and deploy the RR Workstation replacement after final desktop/mobile/Game Tour QA.
 - [ ] Submit one genuine live enquiry after launch to verify Web3Forms delivery; do not use an automated fake contact submission.
 
 ## Handoff instructions for future contributors / sessions
 
 1. Read this file before changing scope, copy, project facts, interaction rules, or deployment configuration.
 2. Inspect the existing code and Git status before editing. Preserve user changes.
-3. Keep the main site professional and evidence-led. Put experimental interactions in their optional routes.
+3. Keep the main site professional and evidence-led. The Workstation stays the complete recruiter path; experimental interactions belong in optional routes/apps.
 4. Ask Rahul at the moment real evidence, an exact fact, a demo video, a client-disclosure decision, or a secret is needed. Do not fill gaps with AI-generated content.
 5. Verify every factual claim against Rahul's supplied evidence before publishing.
 6. Never commit secrets, raw private resources, or third-party source code.

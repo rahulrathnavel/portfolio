@@ -179,17 +179,17 @@ export default class Sounds
 
     setMute()
     {
-        // Set up
-        this.muted = typeof this.debug !== 'undefined'
-        Howler.mute(this.muted)
+        // The optional game never takes over a visitor's audio. They can opt
+        // in through the visible control or press M.
+        this.muted = true
+        this.setMuted(this.muted)
 
         // M Key
         window.addEventListener('keydown', (_event) =>
         {
             if(_event.key === 'm')
             {
-                this.muted = !this.muted
-                Howler.mute(this.muted)
+                this.toggleMute()
             }
         })
 
@@ -202,7 +202,7 @@ export default class Sounds
             }
             else
             {
-                Howler.mute(this.muted)
+                this.setMuted(this.muted)
             }
         })
 
@@ -310,6 +310,18 @@ export default class Sounds
             folder.add(this.engine, 'accelerationMultiplier').step(0.01).min(0).max(100).name('accelerationMultiplier')
             folder.add(this.engine, 'progress').step(0.01).min(0).max(1).name('progress').listen()
         }
+    }
+
+    setMuted(_muted)
+    {
+        this.muted = Boolean(_muted)
+        Howler.mute(this.muted)
+        window.dispatchEvent(new CustomEvent('rr-sound-change', { detail: { muted: this.muted } }))
+    }
+
+    toggleMute()
+    {
+        this.setMuted(!this.muted)
     }
 
     startEngine()

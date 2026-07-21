@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://rahulrathnavel.dev"),
   title: {
-    default: "Rahul Rathnavel — Applied AI Engineer",
+    default: "RR Workstation — Rahul Rathnavel",
     template: "%s — Rahul Rathnavel",
   },
   description:
-    "Applied AI/ML engineer and data-driven product builder. Explore Rahul Rathnavel's systems, experiments, and open-source work.",
+    "An evidence-led desktop portfolio for Rahul Rathnavel, an applied AI/ML engineer and data-driven product builder.",
   openGraph: {
-    title: "Rahul Rathnavel — Applied AI Engineer",
+    title: "RR Workstation — Rahul Rathnavel",
     description: "Systems, experiments, and open-source work built with care.",
     url: "https://rahulrathnavel.dev",
     siteName: "Rahul Rathnavel",

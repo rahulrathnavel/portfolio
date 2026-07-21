@@ -47,18 +47,12 @@ export default class Application
         this.config = {}
         this.config.debug = window.location.hash === '#debug'
         this.config.cyberTruck = window.location.hash === '#cybertruck'
-        this.config.touch = false
+        this.config.touch = window.matchMedia('(pointer: coarse)').matches
 
-        window.addEventListener('touchstart', () =>
-        {
-            this.config.touch = true
-            this.world.controls.setTouch()
-
-            this.passes.horizontalBlurPass.strength = 1
-            this.passes.horizontalBlurPass.material.uniforms.uStrength.value = new THREE.Vector2(this.passes.horizontalBlurPass.strength, 0)
-            this.passes.verticalBlurPass.strength = 1
-            this.passes.verticalBlurPass.material.uniforms.uStrength.value = new THREE.Vector2(0, this.passes.verticalBlurPass.strength)
-        }, { once: true })
+        // The original tour created a second, hidden set of touch controls
+        // after the first tap. RR uses the visible control pad for both mouse
+        // and touch, so a visitor never has to discover an invisible UI.
+        // The coarse-pointer flag still enables the lighter mobile treatment.
     }
 
     /**
@@ -88,8 +82,9 @@ export default class Application
         })
         // this.renderer.setClearColor(0x414141, 1)
         this.renderer.setClearColor(0x000000, 1)
-        // this.renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio, 1.5), 2))
-        this.renderer.setPixelRatio(2)
+        // A cap keeps this optional experience comfortable on high-DPI phones
+        // and laptops without changing the low-poly visual style.
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
         this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
         this.renderer.autoClear = false
 
@@ -239,7 +234,7 @@ export default class Application
      */
     setTitle()
     {
-        document.title = 'Rahul Rathnavel — Interactive AI/ML Portfolio'
+        document.title = 'RR Game Tour | Rahul Rathnavel'
     }
 
     /**

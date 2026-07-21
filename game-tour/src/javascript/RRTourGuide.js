@@ -18,12 +18,13 @@ export default class RRTourGuide
         this.maxStep = this.$messages.length - 1
         this.seenCount = window.localStorage.getItem('rrTourGuideSeenCount') || 0
         this.seenCount = parseInt(this.seenCount)
+        this.guidedMode = new URLSearchParams(window.location.search).get('mode') === 'guided'
         this.shown = false
         this.traveledDistance = 0
         this.minTraveledDistance = (this.config.debug ? 5 : 75) * (this.seenCount + 1)
-        this.prevent = !!window.localStorage.getItem('rrTourGuidePrevent')
+        this.prevent = !this.guidedMode && !!window.localStorage.getItem('rrTourGuidePrevent')
 
-        if(this.config.debug)
+        if(this.config.debug || this.guidedMode)
             this.start()
 
         if(this.prevent)
@@ -52,6 +53,7 @@ export default class RRTourGuide
         this.$yes.addEventListener('click', (event) =>
         {
             event.preventDefault()
+            document.querySelector('.rr-drive-controls')?.classList.add('is-highlighted')
             this.next()
             gsap.delayedCall(5, () =>
             {

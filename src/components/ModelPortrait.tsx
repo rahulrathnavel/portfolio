@@ -1,31 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type HTMLAttributes, type Ref } from "react";
-
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "model-viewer": HTMLAttributes<HTMLElement> & {
-        alt: string;
-        src: string;
-        exposure?: string;
-        "camera-controls"?: boolean;
-        "camera-orbit"?: string;
-        "camera-target"?: string;
-        "disable-pan"?: boolean;
-        "disable-tap"?: boolean;
-        "disable-zoom"?: boolean;
-        "environment-image"?: string;
-        "field-of-view"?: string;
-        "interpolation-decay"?: string;
-        "interaction-prompt"?: "auto" | "none";
-        loading?: "auto" | "eager" | "lazy";
-        ref?: Ref<ModelViewerElement>;
-        "shadow-intensity"?: string;
-      };
-    }
-  }
-}
+import { useEffect, useRef, useState, type ComponentType, type HTMLAttributes, type Ref } from "react";
 
 type ModelPortraitProps = {
   alt: string;
@@ -50,6 +25,27 @@ type ModelViewerElement = HTMLElement & {
   };
   loaded?: boolean;
 };
+
+type ModelViewerProps = HTMLAttributes<ModelViewerElement> & {
+  alt: string;
+  src: string;
+  exposure?: string;
+  "camera-controls"?: boolean;
+  "camera-orbit"?: string;
+  "camera-target"?: string;
+  "disable-pan"?: boolean;
+  "disable-tap"?: boolean;
+  "disable-zoom"?: boolean;
+  "environment-image"?: string;
+  "field-of-view"?: string;
+  "interpolation-decay"?: string;
+  "interaction-prompt"?: "auto" | "none";
+  loading?: "auto" | "eager" | "lazy";
+  ref?: Ref<ModelViewerElement>;
+  "shadow-intensity"?: string;
+};
+
+const ModelViewer = "model-viewer" as unknown as ComponentType<ModelViewerProps>;
 
 const HORIZONTAL_LOOK_RANGE = 8;
 const VERTICAL_LOOK_RANGE = 4.5;
@@ -88,9 +84,10 @@ export default function ModelPortrait({
   const [loadFailed, setLoadFailed] = useState(false);
   const [cursorMotionEnabled, setCursorMotionEnabled] = useState(false);
   const animationFrameRef = useRef<number | null>(null);
-  const baseOrbitRef = useRef<OrbitGoal>(parseCameraOrbit(cameraOrbit));
+  const initialOrbit = parseCameraOrbit(cameraOrbit);
+  const baseOrbitRef = useRef<OrbitGoal>(initialOrbit);
   const draggingRef = useRef(false);
-  const pendingOrbitRef = useRef<OrbitGoal>(baseOrbitRef.current);
+  const pendingOrbitRef = useRef<OrbitGoal>(initialOrbit);
   const viewerRef = useRef<ModelViewerElement | null>(null);
 
   useEffect(() => {
@@ -235,7 +232,7 @@ export default function ModelPortrait({
       aria-busy={!isLoaded && !loadFailed}
       className={`model-portrait ${className} ${isLoaded ? "is-loaded" : ""} ${loadFailed ? "has-error" : ""}`}
     >
-      <model-viewer
+      <ModelViewer
         alt={alt}
         camera-controls
         camera-orbit={cameraOrbit}

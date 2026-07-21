@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Rahul Rathnavel — Interactive AI/ML Portfolio</title>
-    <meta name="description" content="Rahul Rathnavel's interactive portfolio: applied AI/ML systems, data projects, product engineering, and open-source work." />
+    <title>RR Game Tour | Rahul Rathnavel</title>
+    <meta name="description" content="An optional, guided 3D route through Rahul Rathnavel's applied AI/ML systems, product work, and proof." />
 
-    <meta itemprop=name content="Rahul Rathnavel — Applied AI/ML Engineer">
+    <meta itemprop=name content="RR Game Tour | Rahul Rathnavel">
     <meta itemprop="description" content="Applied AI/ML engineer building useful intelligent systems, from resilient cloud operations to offline accessibility tools.">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rahul Rathnavel — Applied AI/ML Engineer">
+    <meta name="twitter:title" content="RR Game Tour | Rahul Rathnavel">
     <meta name="twitter:description" content="Applied AI/ML systems, data projects, product engineering, and open-source work.">
 
-    <meta property="og:site_name" content="Rahul Rathnavel — Applied AI/ML Engineer">
+    <meta property="og:site_name" content="RR Game Tour | Rahul Rathnavel">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rahulrathnavel.dev">
-    <meta property="og:title" content="Rahul Rathnavel — Applied AI/ML Engineer">
+    <meta property="og:title" content="RR Game Tour | Rahul Rathnavel">
     <meta property="og:description" content="Applied AI/ML systems, data projects, product engineering, and open-source work.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,12 +35,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=block" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-DwLy7ARb.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BhoqtsHp.css">
+  <script type="module" crossorigin src="./assets/index-CkWfanEl.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C7EQCpSY.css">
 </head>
 <body>
 
     <canvas class="canvas js-canvas"></canvas>
+
+    <aside class="rr-tour-panel" aria-label="About the RR Signal Route">
+        <p class="rr-tour-panel__eyebrow">RR / OPTIONAL DETOUR</p>
+        <h1>Drive into Rahul&apos;s work.</h1>
+        <p>Each illuminated board opens the matching project or proof inside the RR Workspace. The drive is optional; the evidence is not.</p>
+        <div class="rr-tour-panel__links">
+            <a href="../?app=work" target="_blank" rel="noreferrer">Open work</a>
+            <a href="../?app=proof" target="_blank" rel="noreferrer">Open proof</a>
+        </div>
+    </aside>
+
+    <section class="rr-drive-controls" aria-label="Easy driving controls">
+        <div class="rr-drive-controls__heading">
+            <span>Easy drive</span>
+            <small>Hold a direction to steer</small>
+        </div>
+        <div class="rr-drive-controls__pad" role="group" aria-label="Drive the car">
+            <button type="button" class="rr-drive-button rr-drive-button--up" data-drive-action="up" aria-label="Drive forward">&#8593;</button>
+            <button type="button" class="rr-drive-button rr-drive-button--left" data-drive-action="left" aria-label="Steer left">&#8592;</button>
+            <button type="button" class="rr-drive-button rr-drive-button--brake" data-drive-action="brake" aria-label="Brake">STOP</button>
+            <button type="button" class="rr-drive-button rr-drive-button--right" data-drive-action="right" aria-label="Steer right">&#8594;</button>
+            <button type="button" class="rr-drive-button rr-drive-button--down" data-drive-action="down" aria-label="Reverse">&#8595;</button>
+        </div>
+        <div class="rr-drive-controls__utility">
+            <button type="button" class="rr-utility-button js-rr-reset">Reset car <kbd>R</kbd></button>
+            <button type="button" class="rr-utility-button js-rr-sound" aria-pressed="false">Sound: off <kbd>M</kbd></button>
+        </div>
+    </section>
 
     <div class="rr-tour-guide is-hover-none js-rr-tour-guide">
         <div class="message js-message">
@@ -53,13 +81,13 @@
                 <div class="variant is-shrugging"></div>
             </div>
             <div class="bubble">
-                <div class="text">Hey! You found Rahul&apos;s interactive portfolio.</div>
+                <div class="text">Welcome to Rahul&apos;s Signal Route.</div>
                 <div class="tip"></div>
             </div>
         </div>
         <div class="message js-message">
             <div class="bubble">
-                <div class="text">Want the quick driving guide before you explore?</div>
+                <div class="text">Hold forward, make gentle turns, and reset whenever you want. This is a detour, not a driving test.</div>
                 <div class="tip"></div>
             </div>
         </div>
@@ -67,21 +95,22 @@
             <a href="#" class="answer is-no js-no">
                 <span class="background"></span>
                 <span class="hover"></span>
-                <span class="label">I can drive</span>
+                <span class="label">I&apos;m good</span>
             </a>
             <a href="#" class="answer is-yes js-yes">
                 <span class="background"></span>
                 <span class="hover"></span>
-                <span class="label">Show me</span>
+                <span class="label">Show controls</span>
             </a>
         </div>
         <div class="message js-message">
             <div class="bubble">
-                <div class="text">Use arrows or WASD to drive. Boards open Rahul&apos;s work in a new tab. Try not to break the car.</div>
+                <div class="text">The pad works with mouse or touch. Arrow keys and WASD work too. Every board opens its case file in a new tab.</div>
                 <div class="tip"></div>
             </div>
         </div>
     </div>
+
 
 </body>
 </html>

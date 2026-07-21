@@ -17,6 +17,7 @@ export default class Controls extends EventEmitter
 
         this.setActions()
         this.setKeyboard()
+        this.setOverlayControls()
     }
 
     setActions()
@@ -31,16 +32,23 @@ export default class Controls extends EventEmitter
 
         document.addEventListener('visibilitychange', () =>
         {
-            if(!document.hidden)
+            if(document.hidden)
             {
-                this.actions.up = false
-                this.actions.right = false
-                this.actions.down = false
-                this.actions.left = false
-                this.actions.brake = false
-                this.actions.boost = false
+                this.resetActions()
             }
         })
+
+        window.addEventListener('blur', () => this.resetActions())
+    }
+
+    resetActions()
+    {
+        this.actions.up = false
+        this.actions.right = false
+        this.actions.down = false
+        this.actions.left = false
+        this.actions.brake = false
+        this.actions.boost = false
     }
 
     setKeyboard()
@@ -50,33 +58,44 @@ export default class Controls extends EventEmitter
 
         this.keyboard.events.keyDown = (_event) =>
         {
+            const target = _event.target instanceof Element ? _event.target : null
+            if(target?.closest('button, a'))
+            {
+                return
+            }
+
             switch(_event.code)
             {
                 case 'ArrowUp':
                 case 'KeyW':
+                    _event.preventDefault()
                     this.camera.pan.reset()
                     this.actions.up = true
                     break
 
                 case 'ArrowRight':
                 case 'KeyD':
+                    _event.preventDefault()
                     this.actions.right = true
                     break
 
                 case 'ArrowDown':
                 case 'KeyS':
+                    _event.preventDefault()
                     this.camera.pan.reset()
                     this.actions.down = true
                     break
 
                 case 'ArrowLeft':
                 case 'KeyA':
+                    _event.preventDefault()
                     this.actions.left = true
                     break
 
                 case 'ControlLeft':
                 case 'ControlRight':
                 case 'Space':
+                    _event.preventDefault()
                     this.actions.brake = true
                     break
 
@@ -93,6 +112,12 @@ export default class Controls extends EventEmitter
 
         this.keyboard.events.keyUp = (_event) =>
         {
+            const target = _event.target instanceof Element ? _event.target : null
+            if(target?.closest('button, a'))
+            {
+                return
+            }
+
             switch(_event.code)
             {
                 case 'ArrowUp':
@@ -134,6 +159,72 @@ export default class Controls extends EventEmitter
 
         document.addEventListener('keydown', this.keyboard.events.keyDown)
         document.addEventListener('keyup', this.keyboard.events.keyUp)
+    }
+
+    setOverlayControls()
+    {
+        const $buttons = [...document.querySelectorAll('[data-drive-action]')]
+        const $reset = document.querySelector('.js-rr-reset')
+        const $sound = document.querySelector('.js-rr-sound')
+
+        const setSoundLabel = () =>
+        {
+            if(!$sound)
+            {
+                return
+            }
+
+            $sound.setAttribute('aria-pressed', String(!this.sounds.muted))
+            $sound.innerHTML = `Sound: ${this.sounds.muted ? 'off' : 'on'} <kbd>M</kbd>`
+        }
+
+        for(const $button of $buttons)
+        {
+            const action = $button.dataset.driveAction
+            if(!action || !(action in this.actions))
+            {
+                continue
+            }
+
+            const release = (_event) =>
+            {
+                this.actions[action] = false
+                $button.classList.remove('is-pressed')
+
+                if(_event.pointerId !== undefined && $button.hasPointerCapture?.(_event.pointerId))
+                {
+                    $button.releasePointerCapture(_event.pointerId)
+                }
+            }
+
+            $button.addEventListener('pointerdown', (_event) =>
+            {
+                _event.preventDefault()
+
+                if(action === 'up' || action === 'down')
+                {
+                    this.camera.pan.reset()
+                }
+
+                this.actions[action] = true
+                $button.classList.add('is-pressed')
+                $button.setPointerCapture?.(_event.pointerId)
+            })
+
+            $button.addEventListener('pointerup', release)
+            $button.addEventListener('pointercancel', release)
+            $button.addEventListener('lostpointercapture', release)
+        }
+
+        $reset?.addEventListener('click', () => this.trigger('action', ['reset']))
+        $sound?.addEventListener('click', () =>
+        {
+            this.sounds.toggleMute()
+            setSoundLabel()
+        })
+
+        window.addEventListener('rr-sound-change', setSoundLabel)
+        setSoundLabel()
     }
 
     setTouch()

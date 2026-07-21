@@ -6,7 +6,7 @@ export const profile = {
     headline: 'Useful intelligent systems for the real world',
     github: 'https://github.com/rahulrathnavel',
     linkedin: 'https://www.linkedin.com/in/rahulrathnavel/',
-    email: 'mailto:rahulrathnavel15@gmail.com',
+    email: 'mailto:rahulrathnavell5@gmail.com',
     resume: 'https://rahulrathnavel.dev/resume/Rahul-Rathnavel-Resume.pdf',
     portfolio: 'https://rahulrathnavel.dev/'
 }
@@ -15,7 +15,7 @@ export const portfolioProjects = [
     {
         name: 'SmartOps',
         category: 'AIOps / national finalist',
-        href: 'https://rahulrathnavel.dev/#work',
+        href: 'https://rahulrathnavel.dev/?app=work',
         color: '#ef6347',
         pages: [
             ['National finalist', 'SmartOps reached the TECHgium final stage as one of 34 selected teams from more than 62,000 registrations.', 'TOP 1%'],
@@ -26,7 +26,7 @@ export const portfolioProjects = [
     {
         name: 'Amazon ML Challenge',
         category: 'NLP regression / Cyber Titans',
-        href: 'https://rahulrathnavel.dev/#proof',
+        href: 'https://rahulrathnavel.dev/?app=proof',
         color: '#ffb347',
         pages: [
             ['Rank 900 → Rank 83', 'A price-prediction run refined through modelling, validation, and the discipline to learn from leaderboard drops.', 'RANK 83'],
@@ -48,7 +48,7 @@ export const portfolioProjects = [
     {
         name: 'Smart Glass',
         category: 'Edge AI / accessibility',
-        href: 'https://rahulrathnavel.dev/#work',
+        href: 'https://rahulrathnavel.dev/?app=work',
         color: '#a99dff',
         pages: [
             ['Assistance without surrendering privacy', 'A wearable visual-input prototype paired with a Flutter app for object, text, and face assistance.', 'EDGE AI'],
@@ -92,7 +92,7 @@ export const portfolioProjects = [
     {
         name: 'Job Signal Verification',
         category: 'Private build / trust',
-        href: 'mailto:rahulrathnavel15@gmail.com?subject=Job%20signal%20verification%20project',
+        href: 'mailto:rahulrathnavell5@gmail.com?subject=Job%20signal%20verification%20project',
         color: '#9acb59',
         pages: [
             ['A better first filter', 'A private workflow for classifying suspicious job listings and matching opportunities to a supplied résumé.', 'PRIVATE WORK'],
@@ -103,7 +103,7 @@ export const portfolioProjects = [
     {
         name: 'Encrypted Smart-Grid ML',
         category: 'Private research / privacy',
-        href: 'mailto:rahulrathnavel15@gmail.com?subject=Encrypted%20smart-grid%20ML%20project',
+        href: 'mailto:rahulrathnavell5@gmail.com?subject=Encrypted%20smart-grid%20ML%20project',
         color: '#8fc7dc',
         pages: [
             ['Useful models should respect sensitive data', 'A private ML research workflow exploring predictions over protected smart-grid data.', 'PRIVACY ML'],

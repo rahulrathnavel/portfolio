@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // The Three.js tour is a separately built Vite application with its own tooling.
+    "game-tour/**",
     "next-env.d.ts",
   ]),
 ]);

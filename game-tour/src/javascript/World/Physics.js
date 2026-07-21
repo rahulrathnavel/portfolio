@@ -130,7 +130,7 @@ export default class Physics
         this.car.options.wheelHeight = 0.24
         this.car.options.wheelSuspensionStiffness = 50
         this.car.options.wheelSuspensionRestLength = 0.1
-        this.car.options.wheelFrictionSlip = 10
+        this.car.options.wheelFrictionSlip = 12
         this.car.options.wheelDampingRelaxation = 1.8
         this.car.options.wheelDampingCompression = 1.5
         this.car.options.wheelMaxSuspensionForce = 100000
@@ -138,13 +138,15 @@ export default class Physics
         this.car.options.wheelMaxSuspensionTravel = 0.3
         this.car.options.wheelCustomSlidingRotationalSpeed = - 30
         this.car.options.wheelMass = 5
-        this.car.options.controlsSteeringSpeed = 0.005 * 3
-        this.car.options.controlsSteeringMax = Math.PI * 0.17
+        // Slightly calmer than the upstream arcade tuning: project boards are
+        // easier to reach without the car snapping into a sharp turn.
+        this.car.options.controlsSteeringSpeed = 0.011
+        this.car.options.controlsSteeringMax = Math.PI * 0.14
         this.car.options.controlsSteeringQuad = false
         this.car.options.controlsAcceleratinMaxSpeed = 0.055 * 3 / 17
         this.car.options.controlsAcceleratinMaxSpeedBoost = 0.11 * 3 / 17
-        this.car.options.controlsAcceleratingSpeed = 2 * 4 * 2
-        this.car.options.controlsAcceleratingSpeedBoost = 3.5 * 4 * 2
+        this.car.options.controlsAcceleratingSpeed = 12
+        this.car.options.controlsAcceleratingSpeedBoost = 18
         this.car.options.controlsAcceleratingQuad = true
         this.car.options.controlsBrakeStrength = 0.45 * 3
 

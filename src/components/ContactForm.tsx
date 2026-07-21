@@ -1,12 +1,16 @@
 "use client";
 
 import { ArrowUpRight, LoaderCircle, Send } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
+import { profile } from "@/config/portfolioData";
 
-const email = "rahulrathnavel15@gmail.com";
+type ContactFormProps = {
+  language?: "en" | "ta";
+};
 
-export default function ContactForm() {
+export default function ContactForm({ language = "en" }: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "setup">("idle");
+  const tamil = language === "ta";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,9 +34,7 @@ export default function ContactForm() {
       });
       const data = (await response.json()) as { success?: boolean };
 
-      if (!data.success) {
-        throw new Error("Web3Forms rejected the request");
-      }
+      if (!data.success) throw new Error("Web3Forms rejected the request");
 
       event.currentTarget.reset();
       setStatus("success");
@@ -41,40 +43,44 @@ export default function ContactForm() {
     }
   }
 
-  const result = {
+  const result = (tamil ? {
+    error: "Send aagala. Email button use pannunga.",
     idle: "",
-    sending: "Sending your note…",
+    sending: "Note anuppitu irukku...",
+    setup: "Form connect aagitu irukku. Email button ippo work aagum.",
+    success: "Sent. Rahul inbox-la paapaar.",
+  } : {
+    idle: "",
+    sending: "Sending your note...",
     success: "Sent. Rahul will see it in his inbox.",
     error: "That did not send. Please use the email button instead.",
     setup: "The form is being connected. The email button works right now.",
-  }[status];
+  })[status];
 
   return (
     <>
       <form className="contact-form" onSubmit={handleSubmit}>
         <label>
-          Your name
-          <input autoComplete="name" name="name" placeholder="e.g. Priya from a product team" required />
+          {tamil ? "Ungal peru" : "Your name"}
+          <input autoComplete="name" name="name" placeholder={tamil ? "e.g. Priya, product team" : "e.g. Priya from a product team"} required />
         </label>
         <label>
-          Your email
+          {tamil ? "Ungal email" : "Your email"}
           <input autoComplete="email" name="email" placeholder="you@company.com" type="email" required />
         </label>
         <label>
-          Your note
-          <textarea name="message" placeholder="Hi Rahul, I found your SmartOps work interesting…" required />
+          {tamil ? "Ungal note" : "Your note"}
+          <textarea name="message" placeholder={tamil ? "Hi Rahul, SmartOps work interesting-aa irundhuchu..." : "Hi Rahul, I found your SmartOps work interesting..."} required />
         </label>
         <button className="button" disabled={status === "sending"} type="submit">
           {status === "sending" ? <LoaderCircle size={16} className="animate-spin" /> : <Send size={16} />}
-          Send the note
+          {tamil ? "Note anuppunga" : "Send the note"}
         </button>
-        <p aria-live="polite" className="form-result">
-          {result}
-        </p>
+        <p aria-live="polite" className="form-result">{result}</p>
       </form>
       <div className="contact-actions">
-        <a className="button secondary" href={`mailto:${email}?subject=Hello%20Rahul`}>
-          Or email Rahul directly <ArrowUpRight size={16} />
+        <a className="button secondary" href={`mailto:${profile.email}?subject=Hello%20Rahul`}>
+          {tamil ? "Illa na Rahul-kku direct email pannunga" : "Or email Rahul directly"} <ArrowUpRight size={16} />
         </a>
       </div>
     </>

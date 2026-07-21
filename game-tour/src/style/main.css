@@ -40,14 +40,196 @@ html
     cursor: pointer;
 }
 
+.rr-tour-panel,
+.rr-drive-controls
+{
+    position: fixed;
+    z-index: 5;
+    font-family: Arial, sans-serif;
+    color: #f8fafc;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.rr-tour-panel
+{
+    top: 24px;
+    left: 24px;
+    width: min(330px, calc(100vw - 48px));
+    padding: 18px;
+    border: 1px solid rgba(226, 232, 240, 0.32);
+    border-radius: 14px;
+    background: rgba(11, 22, 40, 0.78);
+    box-shadow: 0 18px 40px rgba(1, 8, 20, 0.3);
+    backdrop-filter: blur(12px);
+}
+
+.rr-tour-panel__eyebrow,
+.rr-drive-controls__heading span
+{
+    margin: 0 0 8px;
+    color: #fdb572;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.rr-tour-panel h1
+{
+    margin: 0;
+    color: #fffaf0;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.rr-tour-panel > p:not(.rr-tour-panel__eyebrow)
+{
+    margin: 10px 0 0;
+    color: #d8e3ef;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.rr-tour-panel__links,
+.rr-drive-controls__utility
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.rr-tour-panel__links a,
+.rr-utility-button,
+.rr-drive-button
+{
+    border: 1px solid rgba(248, 250, 252, 0.42);
+    border-radius: 8px;
+    color: #f8fafc;
+    background: rgba(15, 23, 42, 0.58);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+
+.rr-tour-panel__links a,
+.rr-utility-button
+{
+    padding: 8px 10px;
+}
+
+.rr-tour-panel__links a:hover,
+.rr-tour-panel__links a:focus-visible,
+.rr-utility-button:hover,
+.rr-utility-button:focus-visible,
+.rr-drive-button:hover,
+.rr-drive-button:focus-visible,
+.rr-drive-button.is-pressed
+{
+    border-color: #fdb572;
+    background: rgba(253, 181, 114, 0.22);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.rr-drive-controls
+{
+    right: 24px;
+    bottom: 24px;
+    display: grid;
+    justify-items: end;
+}
+
+.rr-drive-controls.is-highlighted
+{
+    animation: rrControlsPulse 0.8s ease-out 2;
+}
+
+@keyframes rrControlsPulse
+{
+    50%
+    {
+        filter: drop-shadow(0 0 12px rgba(253, 181, 114, 0.9));
+        transform: scale(1.035);
+    }
+}
+
+.rr-drive-controls__heading
+{
+    width: 100%;
+    margin-bottom: 8px;
+    padding-right: 4px;
+    text-align: right;
+}
+
+.rr-drive-controls__heading span,
+.rr-drive-controls__heading small
+{
+    display: block;
+}
+
+.rr-drive-controls__heading small
+{
+    color: #d8e3ef;
+    font-size: 11px;
+}
+
+.rr-drive-controls__pad
+{
+    display: grid;
+    grid-template-columns: repeat(3, 48px);
+    grid-template-areas:
+        '. up .'
+        'left brake right'
+        '. down .';
+    gap: 5px;
+}
+
+.rr-drive-button
+{
+    display: grid;
+    width: 48px;
+    height: 42px;
+    place-items: center;
+    padding: 0;
+    touch-action: none;
+    cursor: pointer;
+}
+
+.rr-drive-button--up { grid-area: up; }
+.rr-drive-button--left { grid-area: left; }
+.rr-drive-button--brake { grid-area: brake; font-size: 9px; letter-spacing: 0.04em; }
+.rr-drive-button--right { grid-area: right; }
+.rr-drive-button--down { grid-area: down; }
+
+.rr-drive-controls__utility
+{
+    justify-content: flex-end;
+}
+
+.rr-utility-button
+{
+    cursor: pointer;
+}
+
+.rr-utility-button kbd
+{
+    margin-left: 4px;
+    color: #fdb572;
+    font: 800 10px monospace;
+}
+
 .rr-tour-guide
 {
     display: none;
     flex-direction: column;
     justify-content: flex-end;
     position: absolute;
-    bottom: 40px;
-    right: 40px;
+    bottom: 225px;
+    right: 28px;
     width: 420px;
     -webkit-user-select: none;
     user-select: none;
@@ -265,4 +447,83 @@ html
 {
     transform-origin: 100% 0;
     opacity: 0.2;
+}
+
+@media (max-width: 720px)
+{
+    .rr-tour-panel
+    {
+        top: 12px;
+        left: 12px;
+        width: min(300px, calc(100vw - 24px));
+        padding: 14px;
+    }
+
+    .rr-tour-panel h1
+    {
+        font-size: 18px;
+    }
+
+    .rr-tour-panel > p:not(.rr-tour-panel__eyebrow)
+    {
+        font-size: 12px;
+    }
+
+    .rr-drive-controls
+    {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .rr-tour-guide
+    {
+        right: 12px;
+        bottom: 220px;
+        width: min(360px, calc(100vw - 24px));
+    }
+
+    .rr-tour-guide .message
+    {
+        font-size: 15px;
+    }
+
+    .rr-tour-guide .message .bubble
+    {
+        padding: 14px 18px;
+    }
+}
+
+@media (max-width: 420px)
+{
+    .rr-tour-panel__links a:nth-child(2)
+    {
+        display: none;
+    }
+
+    .rr-tour-guide
+    {
+        bottom: 207px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .rr-tour-panel__links a,
+    .rr-utility-button,
+    .rr-drive-button,
+    .rr-tour-guide .message,
+    .rr-tour-guide .boy .variant
+    {
+        transition: none;
+    }
+
+    .rr-tour-guide .boy .is-hi .arm
+    {
+        animation: none;
+    }
+
+    .rr-drive-controls.is-highlighted
+    {
+        animation: none;
+    }
 }
