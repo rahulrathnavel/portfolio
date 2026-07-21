@@ -207,7 +207,7 @@ Do not commit raw certificates, the full resume, temporary PDF renderings, the S
 - [x] Pushed the first release, created the GitHub Pages site in workflow mode, and verified `https://rahulrathnavel.dev` with HTTPS enforced.
 - [x] Integrated the Rahul-specific `/game-tour/` MIT derivative and connected it as the optional RR Game Tour application.
 - [x] Added a visible mouse/touch drive pad, reset control, guided mode, muted-by-default sound, calmer physics, and desktop deep links to the Game Tour source.
-- [ ] Verify and deploy the RR Workstation replacement after final desktop/mobile/Game Tour QA.
+- [x] Verified and deployed the RR Workstation replacement after final desktop/mobile/Game Tour QA (GitHub Pages run `29872497189`, commit `792a78a`).
 - [ ] Submit one genuine live enquiry after launch to verify Web3Forms delivery; do not use an automated fake contact submission.
 
 ## Handoff instructions for future contributors / sessions
