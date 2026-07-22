@@ -129,13 +129,13 @@ const About = () => {
 
   const skills = [
     'Python',
-    'NLP / RAG',
-    'FAISS + BM25',
-    'React',
-    'Flutter + Kotlin',
+    'PyTorch',
+    'Hugging Face + Transformers',
+    'LLM Engineering (RAG + LangGraph)',
+    'FastAPI',
+    'Docker',
     'AWS + Terraform',
-    'Prometheus + CloudWatch',
-    'Git + open source',
+    'Git + Linux',
   ];
 
   return (
