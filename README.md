@@ -1,40 +1,73 @@
-# rahulrathnavel.dev
+# Rahul Rathnavel OS Portfolio
 
-The source code for Rahul Rathnavel's **RR Workstation**: an evidence-led desktop-style portfolio for AI/ML, data, and software roles, with an optional 3D Game Tour.
+This repository is Rahul Rathnavel's portfolio built directly on the
+[daedalOS](https://github.com/DustinBrett/daedalOS) desktop environment. The
+desktop engine, File Explorer, Start menu, taskbar, window manager, and virtual
+filesystem are upstream daedalOS code modified under its MIT License.
 
-Read [PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md) before changing project facts, visual direction, assets, deployment, or contact-form configuration.
+The visible desktop contains only Rahul's portfolio content and one game:
+
+- Start Here
+- About Rahul
+- Selected Work
+- Proof & Achievements
+- Rahul's public resume
+- Contact Rahul
+- RR Game Tour
+
+Read [PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md) before changing content or
+deployment configuration.
 
 ## Local development
 
-```bash
-pnpm install
-pnpm dev
+Requirements: Node.js 22+ and Corepack.
+
+```powershell
+cd R:\portfolio\site
+corepack enable
+$env:NODE_OPTIONS='--openssl-legacy-provider'
+corepack yarn install --frozen-lockfile
+
+cd game-tour
+npm ci
+npm run build
+
+cd ..
+corepack yarn dev
 ```
 
 Open `http://localhost:3000`.
 
-## Game Tour source
+The Game Tour can also be tested directly at:
 
-The optional tour is built separately and published into `public/game-tour/` for GitHub Pages:
-
-```bash
-cd game-tour
-npm ci
-npm run build
+```text
+http://localhost:3000/game-tour/index.html?mode=guided
 ```
 
-Then return to the repository root and run `pnpm build` before deployment.
+## Content architecture
 
-During Next.js local development, open the static tour at
-`http://localhost:3000/game-tour/index.html` (GitHub Pages also serves the cleaner
-`/game-tour/` directory URL after deployment).
+The visible portfolio is daedalOS's virtual filesystem, not a separate scrolling
+site:
+
+```text
+public/Users/Public/Desktop/      desktop shortcuts
+public/Users/Public/Start Menu/   Start menu shortcuts
+public/Users/Public/Documents/    Rahul's portfolio Markdown and resume
+public/game-tour/                built optional RR Game Tour
+```
+
+After changing virtual desktop files, run `corepack yarn build`. Its prebuild
+scripts regenerate the virtual filesystem, shortcut, icon, search, RSS, and
+robots indexes.
 
 ## Deployment
 
-The repository deploys a static Next.js export to GitHub Pages via `.github/workflows/deploy.yml`. The `public/CNAME` file assigns `rahulrathnavel.dev`.
+GitHub Actions builds the Game Tour first, then exports daedalOS into `out/`
+for GitHub Pages. `public/CNAME` keeps the custom domain
+`rahulrathnavel.dev` attached to the published site.
 
-Before a production deployment, configure this GitHub Actions repository secret:
+## License and attribution
 
-- `WEB3FORMS_ACCESS_KEY`
-
-The form key is deliberately never committed. See the Contact form and privacy section in [PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md) for the static-site limitation and domain allow-list requirement.
+The root [LICENSE](./LICENSE) retains the daedalOS MIT notice. Public credit
+details are available at `/CREDITS.md`. The RR Game Tour separately retains its
+Bruno Simon MIT derivative notices in `game-tour/`.

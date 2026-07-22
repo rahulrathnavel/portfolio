@@ -1,5 +1,7 @@
 import { Howl, Howler } from 'howler'
 
+const assetUrl = (_source) => `${import.meta.env.BASE_URL}${_source.replace(/^\.\//, '')}`
+
 export default class Sounds
 {
     constructor(_options)
@@ -252,7 +254,7 @@ export default class Sounds
         this.engine.targetVolume = 0
 
         this.engine.sound = new Howl({
-            src: ['./sounds/engines/1/low_off.mp3'],
+            src: [assetUrl('./sounds/engines/1/low_off.mp3')],
             loop: true,
             onload: () =>
             {
@@ -374,7 +376,7 @@ export default class Sounds
 
         for(const _sound of _options.sounds)
         {
-            const sound = new Howl({ src: [_sound] })
+            const sound = new Howl({ src: [assetUrl(_sound)] })
 
             item.sounds.push(sound)
         }

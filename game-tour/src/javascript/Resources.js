@@ -3,6 +3,11 @@ import * as THREE from 'three'
 import Loader from './Utils/Loader.js'
 import EventEmitter from './Utils/EventEmitter.js'
 
+// The tour can be opened at either /game-tour/ or /game-tour/index.html by
+// the desktop. Resolve public models from Vite's configured deployment base
+// instead of the browser's current clean URL.
+const assetUrl = (_source) => `${import.meta.env.BASE_URL}${_source.replace(/^\.\//, '')}`
+
 export default class Resources extends EventEmitter
 {
     constructor()
@@ -192,7 +197,7 @@ export default class Resources extends EventEmitter
             // // Egg
             // { name: 'eggBase', source: './models/egg/base.glb' },
             // { name: 'eggCollision', source: './models/egg/collision.glb' },
-        ])
+        ].map((_resource) => ({ ..._resource, source: assetUrl(_resource.source) })))
 
         this.loader.on('fileEnd', (_resource, _data) =>
         {

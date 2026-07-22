@@ -15,7 +15,7 @@ export const portfolioProjects = [
     {
         name: 'SmartOps',
         category: 'AIOps / national finalist',
-        href: 'https://rahulrathnavel.dev/?app=work',
+        href: 'https://rahulrathnavel.dev/?url=/Users/Public/Documents/Selected%20Work/01%20SmartOps.md',
         color: '#ef6347',
         pages: [
             ['National finalist', 'SmartOps reached the TECHgium final stage as one of 34 selected teams from more than 62,000 registrations.', 'TOP 1%'],
@@ -26,7 +26,7 @@ export const portfolioProjects = [
     {
         name: 'Amazon ML Challenge',
         category: 'NLP regression / Cyber Titans',
-        href: 'https://rahulrathnavel.dev/?app=proof',
+        href: 'https://rahulrathnavel.dev/?url=/Users/Public/Documents/Selected%20Work/02%20Amazon%20ML%20Challenge%202025.md',
         color: '#ffb347',
         pages: [
             ['Rank 900 → Rank 83', 'A price-prediction run refined through modelling, validation, and the discipline to learn from leaderboard drops.', 'RANK 83'],
@@ -48,7 +48,7 @@ export const portfolioProjects = [
     {
         name: 'Smart Glass',
         category: 'Edge AI / accessibility',
-        href: 'https://rahulrathnavel.dev/?app=work',
+        href: 'https://rahulrathnavel.dev/?url=/Users/Public/Documents/Selected%20Work/03%20Smart%20Glass%20Assistant.md',
         color: '#a99dff',
         pages: [
             ['Assistance without surrendering privacy', 'A wearable visual-input prototype paired with a Flutter app for object, text, and face assistance.', 'EDGE AI'],

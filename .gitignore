@@ -1,41 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.next
+.swc
+tsconfig.tsbuildinfo
+certificates
+out
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+node_modules
+/.node_modules-pre-daedalos-*
 
-# testing
-/coverage
+test-results
+playwright-report
+playwright/.cache
 
-# next.js
-/.next/
-/out/
+public/private
+public/robots.txt
+public/rss.xml
+public/sitemap.xml
+public/.index/*
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Rahul's portfolio is represented by daedalOS's virtual Public desktop and
+# documents. These files are authored content, so they must remain versioned.

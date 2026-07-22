@@ -17,26 +17,27 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --openssl-legacy-provider
     steps:
       - name: Check out source
         uses: actions/checkout@v4
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11.9.0
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: yarn
+      - name: Enable Corepack
+        run: corepack enable
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: yarn install --frozen-lockfile
+      - name: Build RR Game Tour
+        run: npm ci && npm run build
+        working-directory: game-tour
       - name: Build static site
-        run: pnpm build
-        env:
-          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+        run: yarn build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

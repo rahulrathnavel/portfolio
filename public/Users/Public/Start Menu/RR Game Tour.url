@@ -1,0 +1,5 @@
+[InternetShortcut]
+BaseURL=GameTour
+Comment=The only game: Rahul's interactive work tour.
+IconFile=/System/Icons/pinball.webp
+URL=/game-tour/index.html?mode=guided

@@ -2,9 +2,10 @@ import glsl from 'vite-plugin-glsl'
 
 export default {
     root: 'src/', // Sources files (typically where index.html is)
-    // The tour is published as a self-contained page below /game-tour/.
-    // Relative URLs keep its bundles and static assets inside that route on GitHub Pages.
-    base: './',
+    // The virtual desktop can open this page through either /game-tour/ or
+    // /game-tour/index.html. An absolute route keeps Vite's assets stable
+    // when a static host applies its clean-URL redirect.
+    base: '/game-tour/',
     publicDir: '../static/', // Path from "root" to static assets (files that are served as they are)
     server:
     {
