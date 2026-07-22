@@ -379,7 +379,7 @@ export const PACKAGE_DATA = {
     url: "https://rahulrathnavel.dev",
   },
   description:
-    "Aspiring AI/ML software engineer — learning, building, and exploring where LLMs fail.",
+    "Aspiring AI/ML software engineer who loves learning, building, and discussing LLMs — especially where they fail.",
   license: "MIT",
   version: "2.0.0",
 };

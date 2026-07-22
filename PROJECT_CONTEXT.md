@@ -85,6 +85,16 @@ standard build instead.
 - Target roles: AI/ML engineering, data science, and software/product
   engineering.
 
+## Locked public link-preview identity
+
+Do not change this section, the matching metadata, or the preview image unless
+Rahul explicitly asks:
+
+- Thumbnail: `public/profile-veshti.jpg`
+- Title: `Rahul Rathnavel Portfolio — Aspiring AI/ML Software Engineer`
+- Description: `Aspiring AI/ML software engineer who loves learning, building,
+  and discussing LLMs — especially where they fail.`
+
 ## Verified portfolio claims
 
 Use only the wording supported by Rahul's supplied evidence:

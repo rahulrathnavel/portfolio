@@ -12,6 +12,7 @@ import {
 } from "utils/functions";
 
 const { alias, author, description } = PACKAGE_DATA;
+const socialImage = `${author.url}/profile-veshti.jpg?v=20260722`;
 
 const Metadata: FC = () => {
   const { title, Favicon } = useFaviconAndTitle();
@@ -54,10 +55,16 @@ const Metadata: FC = () => {
       />
       <meta content={description} name="description" />
       <meta content={alias} property="og:title" />
+      <meta content={alias} property="og:site_name" />
       <meta content="website" property="og:type" />
       <meta content={author.url} property="og:url" />
-      <meta content={`${author.url}/profile-veshti.jpg`} property="og:image" />
+      <meta content={socialImage} property="og:image" />
+      <meta content="image/jpeg" property="og:image:type" />
       <meta content={description} property="og:description" />
+      <meta content="summary_large_image" name="twitter:card" />
+      <meta content={alias} name="twitter:title" />
+      <meta content={description} name="twitter:description" />
+      <meta content={socialImage} name="twitter:image" />
       <link
         href={`${author.url}/rss.xml`}
         rel="alternate"
