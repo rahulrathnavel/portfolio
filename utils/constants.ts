@@ -371,7 +371,7 @@ export const DEFAULT_SCROLLBAR_WIDTH = 17;
 export const TASKBAR_HEIGHT = 30;
 
 export const PACKAGE_DATA = {
-  alias: "RR OS",
+  alias: "Rahul Rathnavel Portfolio — Aspiring AI/ML Software Engineer",
   author: {
     email: "rahulrathnavell5@gmail.com",
     name: "Rahul Rathnavel K",
@@ -379,7 +379,7 @@ export const PACKAGE_DATA = {
     url: "https://rahulrathnavel.dev",
   },
   description:
-    "Rahul Rathnavel's AI/ML, data, and software portfolio inside a browser desktop.",
+    "Aspiring AI/ML software engineer — learning, building, and exploring where LLMs fail.",
   license: "MIT",
   version: "2.0.0",
 };

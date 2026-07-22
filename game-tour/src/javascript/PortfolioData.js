@@ -6,7 +6,7 @@ export const profile = {
     headline: 'Useful intelligent systems for the real world',
     github: 'https://github.com/rahulrathnavel',
     linkedin: 'https://www.linkedin.com/in/rahulrathnavel/',
-    email: 'mailto:rahulrathnavell5@gmail.com',
+    email: 'https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavell5%40gmail.com&su=Hello%20Rahul',
     resume: 'https://rahulrathnavel.dev/resume/Rahul-Rathnavel-Resume.pdf',
     portfolio: 'https://rahulrathnavel.dev/'
 }
@@ -92,7 +92,7 @@ export const portfolioProjects = [
     {
         name: 'Job Signal Verification',
         category: 'Private build / trust',
-        href: 'mailto:rahulrathnavell5@gmail.com?subject=Job%20signal%20verification%20project',
+        href: 'https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavell5%40gmail.com&su=Job%20signal%20verification%20project',
         color: '#9acb59',
         pages: [
             ['A better first filter', 'A private workflow for classifying suspicious job listings and matching opportunities to a supplied résumé.', 'PRIVATE WORK'],
@@ -103,7 +103,7 @@ export const portfolioProjects = [
     {
         name: 'Encrypted Smart-Grid ML',
         category: 'Private research / privacy',
-        href: 'mailto:rahulrathnavell5@gmail.com?subject=Encrypted%20smart-grid%20ML%20project',
+        href: 'https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavell5%40gmail.com&su=Encrypted%20smart-grid%20ML%20project',
         color: '#8fc7dc',
         pages: [
             ['Useful models should respect sensitive data', 'A private ML research workflow exploring predictions over protected smart-grid data.', 'PRIVACY ML'],

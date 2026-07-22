@@ -13,6 +13,14 @@ type LinkHandler = (
   title?: string
 ) => void;
 
+const decodePath = (path: string): string => {
+  try {
+    return decodeURIComponent(path);
+  } catch {
+    return path;
+  }
+};
+
 export const useLinkHandler = (): LinkHandler => {
   const { open } = useProcesses();
   const { updateRecentFiles } = useSession();
@@ -28,13 +36,13 @@ export const useLinkHandler = (): LinkHandler => {
       else if (
         !pathName ||
         relative(
-          decodeURI(
+          decodePath(
             (url.startsWith("/") ? url : `/${url}`).replace(
               window.location.origin,
               ""
             )
           ),
-          decodeURI(pathName)
+          decodePath(pathName)
         ) === ""
       ) {
         const defaultProcess = getProcessByFileExtension(
@@ -42,7 +50,7 @@ export const useLinkHandler = (): LinkHandler => {
         );
 
         if (defaultProcess) {
-          const pathUrl = decodeURI(pathName);
+          const pathUrl = decodePath(pathName);
 
           open(defaultProcess, { url: pathUrl });
 

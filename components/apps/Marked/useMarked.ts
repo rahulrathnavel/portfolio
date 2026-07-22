@@ -40,42 +40,61 @@ const useMarked = ({
     [containerRef]
   );
   const loadFile = useCallback(async () => {
-    const markdownFile = await readFile(url);
     const container = getContainer();
 
-    if (container instanceof HTMLElement) {
-      container.classList.remove("drop");
-      container.innerHTML = window.DOMPurify.sanitize(
-        window.marked.parse(markdownFile.toString(), {
-          headerIds: false,
-          mangle: false,
-        })
-      );
-      container
-        .querySelectorAll("a")
-        .forEach((link) =>
-          link.addEventListener("click", (event) =>
-            openLink(
-              event,
-              link.href || "",
-              link.pathname,
-              link.textContent || ""
-            )
-          )
-        );
-      container.scrollTop = 0;
-    }
+    try {
+      let markdown = (await readFile(url)).toString();
 
-    prependFileToTitle(basename(url));
+      if (!markdown.trim()) {
+        const response = await fetch(encodeURI(url));
+
+        if (!response.ok) throw new Error("Unable to load Markdown file.");
+
+        markdown = await response.text();
+      }
+
+      if (!markdown.trim() || !window.DOMPurify || !window.marked) {
+        throw new Error("Markdown renderer is unavailable.");
+      }
+
+      if (container instanceof HTMLElement) {
+        container.classList.remove("drop");
+        container.innerHTML = window.DOMPurify.sanitize(
+          window.marked.parse(markdown, {
+            headerIds: false,
+            mangle: false,
+          })
+        );
+        container
+          .querySelectorAll("a")
+          .forEach((link) =>
+            link.addEventListener("click", (event) =>
+              openLink(
+                event,
+                link.href || "",
+                link.pathname,
+                link.textContent || ""
+              )
+            )
+          );
+        container.scrollTop = 0;
+      }
+    } catch {
+      if (container instanceof HTMLElement) {
+        container.classList.remove("drop");
+        container.textContent =
+          "This document could not be loaded. Please try again.";
+      }
+    } finally {
+      prependFileToTitle(basename(url));
+    }
   }, [getContainer, openLink, prependFileToTitle, readFile, url]);
 
   useEffect(() => {
     if (loading) {
-      loadFiles(libs).then(() => {
-        if (window.marked) {
-          setLoading(false);
-        }
-      });
+      loadFiles(libs)
+        .catch(() => false)
+        .finally(() => setLoading(false));
     }
   }, [libs, loading, setLoading]);
 

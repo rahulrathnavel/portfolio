@@ -21,6 +21,7 @@ const IGNORE_FILES = new Set([
   "preload.json",
   "robots.txt",
   "screenshot.png",
+  "profile-veshti.jpg",
   "search.lunr.json",
   "session.json",
   "sitemap.xml",

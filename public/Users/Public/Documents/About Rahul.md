@@ -22,4 +22,4 @@ He is interested in product teams that care about whether a system is actually u
 - [GitHub](https://github.com/rahulrathnavel)
 - [LinkedIn](https://www.linkedin.com/in/rahulrathnavel/)
 - [LeetCode](https://leetcode.com/rahulrathnavel)
-- [Approved public resume](/Users/Public/Documents/Rahul-Rathnavel-Resume.pdf)
+- [Resume](/Users/Public/Documents/Rahul-Rathnavel-Resume.pdf)
