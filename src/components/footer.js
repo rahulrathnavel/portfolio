@@ -65,10 +65,7 @@ const Footer = () => (
     </StyledSocialLinks>
 
     <StyledCredit tabIndex="-1">
-      <div>Built by Rahul Rathnavel</div>
-      <a href="https://github.com/bchiang7/v4" target="_blank" rel="noopener noreferrer">
-        Design adapted from Brittany Chiang&apos;s v4
-      </a>
+      <div>I am not a great programmer just a good programmer with great habits</div>
     </StyledCredit>
   </StyledFooter>
 );
