@@ -1,5 +1,18 @@
 const path = require('path');
 
+// These controls are optional for individual project records. Gatsby's inferred
+// schema only exposes a field when at least one Markdown file uses it, so keep
+// the optional links typed even when Rahul's current records do not need them.
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type MarkdownRemarkFrontmatter {
+      cta: String
+      ios: String
+      android: String
+    }
+  `);
+};
+
 // The source project also generated a blog. Rahul's portfolio is intentionally
 // focused on work, proof, and a compact archive, so no unpublished post routes
 // are carried into this build.
