@@ -65,7 +65,7 @@ const Footer = () => (
     </StyledSocialLinks>
 
     <StyledCredit tabIndex="-1">
-      <div>I am not a great programmer just a good programmer with great habits</div>
+      <div>I may not be a great programmer, but I’m a good programmer with great habits. 😄</div>
     </StyledCredit>
   </StyledFooter>
 );
