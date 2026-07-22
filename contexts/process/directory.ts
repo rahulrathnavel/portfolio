@@ -230,6 +230,28 @@ const directory: Processes = {
     icon: "/System/Icons/photos.webp",
     title: "Photos",
   },
+  PortfolioAchievements: {
+    Component: dynamic(() => import("components/apps/PortfolioAchievements")),
+    backgroundColor: "#0B1723",
+    defaultSize: {
+      height: 520,
+      width: 560,
+    },
+    icon: "/System/Icons/documents.webp",
+    singleton: true,
+    title: "Explorer Badges",
+  },
+  PortfolioSettings: {
+    Component: dynamic(() => import("components/apps/PortfolioSettings")),
+    backgroundColor: "#0B1723",
+    defaultSize: {
+      height: 630,
+      width: 620,
+    },
+    icon: "/System/Icons/run.webp",
+    singleton: true,
+    title: "Desktop Settings",
+  },
   Properties: {
     Component: dynamic(() => import("components/system/Dialogs/Properties")),
     allowResizing: false,
@@ -255,6 +277,28 @@ const directory: Processes = {
     libs: ["/Program Files/Quake3/Quake3Game.js"],
     lockAspectRatio: true,
     title: "Quake III Arena",
+  },
+  RahulTerminal: {
+    Component: dynamic(() => import("components/apps/RahulTerminal")),
+    backgroundColor: "#07100F",
+    defaultSize: {
+      height: 480,
+      width: 720,
+    },
+    icon: "/System/Icons/xterm.webp",
+    singleton: true,
+    title: "Rahul Terminal",
+  },
+  RecycleBin: {
+    Component: dynamic(() => import("components/apps/RecycleBin")),
+    backgroundColor: "#0D1C29",
+    defaultSize: {
+      height: 440,
+      width: 570,
+    },
+    icon: "/System/Icons/folder.webp",
+    singleton: true,
+    title: "Recycle Bin",
   },
   Ruffle: {
     Component: dynamic(() => import("components/apps/Ruffle")),

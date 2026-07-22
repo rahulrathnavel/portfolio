@@ -1,0 +1,20 @@
+RAHUL TERMINAL — QUICK COMMANDS
+================================
+
+Open the terminal with Ctrl + Alt + T.
+Paste one command at a time, then press Enter:
+
+help
+about
+projects
+skills
+matrix
+coffee
+sudo hire rahul
+rm -rf bugs
+
+Desktop cheat:
+Type iddqd while the desktop has focus (not inside a text field).
+
+These commands are harmless. They are small shortcuts through the portfolio,
+with a little personality included.

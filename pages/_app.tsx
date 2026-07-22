@@ -3,6 +3,7 @@ import { memo } from "react";
 import { ErrorBoundary } from "components/pages/ErrorBoundary";
 import Metadata from "components/pages/Metadata";
 import StyledApp from "components/pages/StyledApp";
+import PortfolioBoot from "components/system/PortfolioBoot";
 import { FileSystemProvider } from "contexts/fileSystem";
 import { MenuProvider } from "contexts/menu";
 import { ProcessProvider } from "contexts/process";
@@ -20,6 +21,7 @@ const App = ({ Component: Index, pageProps }: AppProps): React.ReactElement => (
               <MenuProvider>
                 <Index {...pageProps} />
               </MenuProvider>
+              <PortfolioBoot />
             </StyledApp>
           </ErrorBoundary>
         </SessionProvider>

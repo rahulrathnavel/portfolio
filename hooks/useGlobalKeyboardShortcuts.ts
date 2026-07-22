@@ -92,7 +92,13 @@ const useGlobalKeyboardShortcuts = (): void => {
 
       if (!keyName) return;
 
-      if (shiftKey) {
+      if (ctrlKey && altKey && keyName === "T") {
+        haltEvent(event);
+
+        if (!document.querySelector("[aria-label='RahulOS startup']")) {
+          open("RahulTerminal");
+        }
+      } else if (shiftKey) {
         if (
           (ctrlKey || !metaCombos.has(keyName)) &&
           shiftBindingsRef.current?.[keyName] &&
@@ -163,7 +169,7 @@ const useGlobalKeyboardShortcuts = (): void => {
         capture: true,
       });
     };
-  }, [fullscreenElement, toggleFullscreen]);
+  }, [fullscreenElement, open, toggleFullscreen]);
 
   useEffect(() => {
     altBindingsRef.current = {
