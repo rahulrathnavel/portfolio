@@ -37,9 +37,15 @@ jobs:
         run: yarn --cwd legacy-os install --frozen-lockfile
         env:
           HUSKY: '0'
+          # A transitive RahulOS dependency still builds with Webpack 4.
+          # Keep the source untouched while enabling its legacy hash provider
+          # under the modern Node runtime used by GitHub Actions.
+          NODE_OPTIONS: --openssl-legacy-provider
 
       - name: Build preserved RahulOS
         run: yarn --cwd legacy-os build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
 
       - name: Build preserved game tour
         run: |
