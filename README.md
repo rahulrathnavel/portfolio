@@ -1,73 +1,58 @@
-# Rahul Rathnavel OS Portfolio
+# Rahul Rathnavel Portfolio
 
-This repository is Rahul Rathnavel's portfolio built directly on the
-[daedalOS](https://github.com/DustinBrett/daedalOS) desktop environment. The
-desktop engine, File Explorer, Start menu, taskbar, window manager, and virtual
-filesystem are upstream daedalOS code modified under its MIT License.
+The public portfolio for Rahul Rathnavel — an aspiring AI/ML software engineer who enjoys learning, building, and discussing LLMs, especially where they fail.
 
-The visible desktop contains only Rahul's portfolio content and one game:
+The root site uses the visual system of [Brittany Chiang's v4](https://github.com/bchiang7/v4), with attribution retained under the upstream MIT License. Rahul's content, assets, and project records replace the upstream portfolio data.
 
-- Start Here
-- About Rahul
-- Selected Work
-- Proof & Achievements
-- Rahul's public resume
-- Contact Rahul
-- RR Game Tour
+## Public routes
 
-Read [PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md) before changing content or
-deployment configuration.
+- `/` — the professional portfolio
+- `/os/` — the existing RahulOS experience, preserved as a separate static application
+- `/game-tour/` — the existing interactive game tour, preserved as a separate static application
 
 ## Local development
 
-Requirements: Node.js 22+ and Corepack.
+The root Gatsby project is intentionally kept on the upstream-compatible Node 14 runtime. Use Node `14.21.3` and Yarn Classic `1.22.22` for the root site.
 
 ```powershell
-cd R:\portfolio\site
-corepack enable
-$env:NODE_OPTIONS='--openssl-legacy-provider'
-corepack yarn install --frozen-lockfile
-
-cd game-tour
-npm ci
-npm run build
-
-cd ..
-corepack yarn dev
+corepack prepare yarn@1.22.22 --activate
+yarn install --frozen-lockfile
+yarn develop
 ```
 
-Open `http://localhost:3000`.
+The OS and game are separate applications and are not changed by root-site development.
 
-The Game Tour can also be tested directly at:
+## Production composition
+
+The GitHub Pages workflow builds three independent static outputs and merges them:
 
 ```text
-http://localhost:3000/game-tour/index.html?mode=guided
+Gatsby portfolio  → /
+RahulOS            → /os/
+Game tour          → /game-tour/
 ```
 
-## Content architecture
+Run the same build locally with Node 22 for the legacy OS/game, then Node 14 for Gatsby:
 
-The visible portfolio is daedalOS's virtual filesystem, not a separate scrolling
-site:
+```powershell
+# Node 22
+$env:HUSKY = '0'
+yarn --cwd legacy-os install --frozen-lockfile
+yarn --cwd legacy-os build
+npm --prefix game-tour ci
+npm --prefix game-tour run build -- --outDir "$PWD/.game-tour-dist"
 
-```text
-public/Users/Public/Desktop/      desktop shortcuts
-public/Users/Public/Start Menu/   Start menu shortcuts
-public/Users/Public/Documents/    Rahul's portfolio Markdown and resume
-public/game-tour/                built optional RR Game Tour
+# Switch to Node 14.21.3 before the next commands
+corepack prepare yarn@1.22.22 --activate
+yarn install --frozen-lockfile
+yarn build
+yarn assemble
 ```
 
-After changing virtual desktop files, run `corepack yarn build`. Its prebuild
-scripts regenerate the virtual filesystem, shortcut, icon, search, RSS, and
-robots indexes.
+Serve `dist/` to inspect the composed site.
 
-## Deployment
+## Content integrity
 
-GitHub Actions builds the Game Tour first, then exports daedalOS into `out/`
-for GitHub Pages. `public/CNAME` keeps the custom domain
-`rahulrathnavel.dev` attached to the published site.
-
-## License and attribution
-
-The root [LICENSE](./LICENSE) retains the daedalOS MIT notice. Public credit
-details are available at `/CREDITS.md`. The RR Game Tour separately retains its
-Bruno Simon MIT derivative notices in `game-tour/`.
+- Achievement copy uses supplied evidence: Amazon ML Challenge 2025 Rank 83 / 45.35 SMAPE / Top 2%, and TECHgium 2026 finalist status (34 finalists from 62,000+ registrations).
+- Private client and research work is intentionally anonymized. No private data, names, or unsupported outcomes are published.
+- Medical-related work is described as research/prototyping and is not medical advice or a diagnostic tool.

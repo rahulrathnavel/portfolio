@@ -17,31 +17,60 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NODE_OPTIONS: --openssl-legacy-provider
     steps:
       - name: Check out source
         uses: actions/checkout@v4
-      - name: Set up Node
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # RahulOS and the game retain their existing, modern build environments.
+      - name: Set up Node for RahulOS and game tour
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: yarn
+
       - name: Enable Corepack
         run: corepack enable
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Install dependencies
+
+      - name: Install RahulOS dependencies
+        run: yarn --cwd legacy-os install --frozen-lockfile
+        env:
+          HUSKY: '0'
+
+      - name: Build preserved RahulOS
+        run: yarn --cwd legacy-os build
+
+      - name: Build preserved game tour
+        run: |
+          npm ci --prefix game-tour
+          npm run build --prefix game-tour -- --outDir "$GITHUB_WORKSPACE/.game-tour-dist"
+
+      # The root portfolio keeps the original V4-compatible runtime so its
+      # visual system remains faithful to the licensed upstream source.
+      - name: Set up Node for the V4 root portfolio
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14.21.3
+
+      - name: Install Yarn Classic
+        run: npm install --global yarn@1.22.22
+
+      - name: Install root portfolio dependencies
         run: yarn install --frozen-lockfile
-      - name: Build RR Game Tour
-        run: npm ci && npm run build
-        working-directory: game-tour
-      - name: Build static site
+        env:
+          HUSKY: '0'
+
+      - name: Build V4 root portfolio
         run: yarn build
+
+      - name: Compose the three static applications
+        run: yarn assemble
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   deploy:
     needs: build

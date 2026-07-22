@@ -1,172 +1,125 @@
-# Rahul Rathnavel OS Portfolio — Project Context
+# Rahul Rathnavel Portfolio — Durable Project Context
 
-Read this file before editing the site. It is the durable handoff record for
-future sessions and contributors.
+Read this file before changing the site. It records the agreed public direction,
+verified facts, and safe architecture for future sessions.
 
-## Non-negotiable product direction
+## Final product direction
 
-This site is an **actual daedalOS fork/adaptation**, not a custom desktop-like
-portfolio. Keep daedalOS's real browser desktop, taskbar, Start menu, File
-Explorer, window manager, wallpaper system, virtual filesystem, and interaction
-model intact.
+The **root site** is a clean, professional portfolio adapted from the visual
+system in [Brittany Chiang's V4](https://github.com/bchiang7/v4). Do not add a
+new landing-page design, desktop shell, game UI, excessive animation, emojis,
+or unverified claims to the root portfolio unless Rahul explicitly asks.
 
-Do **not** reintroduce the previous RR Workstation, scrolling landing page,
-custom card grid, arcade page, or alternate portfolio shell. The only custom
-process added to daedalOS is `GameTour`, which embeds Rahul's existing game.
+The root has two deliberate escape hatches only:
 
-The visible desktop must contain only Rahul's content:
+- **OS mode** → `/os/`
+- **Game mode** → `/game-tour/`
 
-1. My PC
-2. Start Here
-3. About Rahul
-4. Selected Work
-5. Proof & Achievements
-6. Rahul-Rathnavel-Resume
-7. Contact Rahul
-8. RR Game Tour
+The existing RahulOS and game tour are separate applications. Do not redesign
+or alter their source while working on the root portfolio. The deployment
+workflow composes all three static outputs.
 
-No Dustin-specific personal shortcuts, no Doom/Quake/Dino shortcut, no generic
-editor/chat/AI shortcuts, and no old portfolio UI should be visible.
+```text
+/              Gatsby V4-style professional portfolio
+/os/           preserved RahulOS static export
+/game-tour/    preserved interactive game tour
+```
 
-## Upstream source and legal requirements
+## Upstream and legal requirements
 
-- Upstream: `https://github.com/DustinBrett/daedalOS`
-- Imported upstream commit: `0df82d75e6114727ad035f6fce93842a96682355`
-- License: MIT, copyright Dustin Brett. Keep root `LICENSE` and public
-  `LICENSE-daedalOS.txt` intact.
-- Public attribution: `public/CREDITS.md`.
-- RR Game Tour is a Rahul-specific derivative of
-  `brunosimon/folio-2019`; preserve `game-tour/license.md` and
-  `game-tour/DERIVATIVE_NOTICE.md`.
-
-The recovery branch `pre-daedalos-replacement` preserves the old custom
-workstation only as a rollback record. It must never be merged back into the
-live portfolio unless Rahul explicitly asks for it.
+- Root portfolio visual source: `https://github.com/bchiang7/v4`
+  - MIT License; keep root `LICENSE`.
+  - Keep public footer credit and `static/CREDITS.md` attribution.
+- RahulOS source lives in `legacy-os/` and retains its daedalOS notices.
+- Game tour source remains in `game-tour/` and retains its own derivative and
+  license notices.
+- Recovery branch for the prior live state:
+  `preserve-rahulos-before-v4` at commit `4da262f`.
 
 ## Canonical architecture
 
 ```text
-pages/index.tsx
-  -> daedalOS Desktop + Taskbar + AppsLoader
+src/ + content/ + static/
+  -> Gatsby root portfolio build (public/)
 
-public/Users/Public/Desktop/*.url
-  -> desktop icons
-public/Users/Public/Start Menu/*.url
-  -> Start menu entries
-public/Users/Public/Documents/*
-  -> portfolio documents opened by Marked, File Explorer, or PDF
+legacy-os/
+  -> unchanged RahulOS / Next static export (legacy-os/out/)
 
-contexts/process/directory.ts
-  -> process registry
-components/apps/GameTour/
-  -> one Rahul-specific iframe process for /game-tour/index.html?mode=guided
+game-tour/
+  -> unchanged Vite game build (.game-tour-dist/)
 
-game-tour/ source
-  -> Vite build
-  -> public/game-tour/
-  -> daedalOS static export (out/)
-  -> GitHub Pages / rahulrathnavel.dev
+scripts/assemble-static.js
+  -> dist/ with Gatsby at /, RahulOS at /os/, game at /game-tour/
 ```
 
-The daedalOS prebuild scripts generate virtual filesystem, shortcut, icon,
-search, RSS, and robots indexes. Never hand-edit `public/.index/`; run the
-standard build instead.
-
-## Rahul profile facts
-
-- Name: Rahul Rathnavel K
-- Public name: Rahul Rathnavel
-- Email: `rahulrathnavell5@gmail.com` — verified against the approved public
-  resume PDF.
-- GitHub: `https://github.com/rahulrathnavel`
-- LinkedIn: `https://www.linkedin.com/in/rahulrathnavel/`
-- LeetCode: `https://leetcode.com/rahulrathnavel`
-- Resume: `public/Users/Public/Documents/Rahul-Rathnavel-Resume.pdf`
-- Target roles: AI/ML engineering, data science, and software/product
-  engineering.
+`gatsby-browser.js` only redirects legacy `?url=` and `?app=` game deep links
+from `/` to `/os/`. It exists to preserve the game-to-OS links without changing
+the game source.
 
 ## Locked public link-preview identity
 
-Do not change this section, the matching metadata, or the preview image unless
+Do not change this section, matching metadata, or the preview image unless
 Rahul explicitly asks:
 
-- Thumbnail: `public/profile-veshti.jpg`
+- Thumbnail: `static/profile-veshti.jpg`
 - Title: `Rahul Rathnavel Portfolio — Aspiring AI/ML Software Engineer`
 - Description: `Aspiring AI/ML software engineer who loves learning, building,
   and discussing LLMs — especially where they fail.`
 
-## Verified portfolio claims
+## Canonical public profile
 
-Use only the wording supported by Rahul's supplied evidence:
+- Public name: Rahul Rathnavel
+- Email: `rahulrathnavell5@gmail.com`
+- GitHub: `https://github.com/rahulrathnavel`
+- LinkedIn: `https://www.linkedin.com/in/rahulrathnavel/`
+- LeetCode: `https://leetcode.com/rahulrathnavel`
+- Kaggle: `https://www.kaggle.com/rahulrathnavel`
+- Resume source: `R:\portfolio\RAHUL_RATHNAVEL_RESUME.pdf`
+- Target roles: AI/ML engineering, data science, and software/product
+  engineering.
 
-- Amazon ML Challenge 2025, team Cyber Titans: Rank 83 and 45.35 SMAPE final
-  submission; Rahul led model development, training, submissions, deployment,
-  and AI/backend work with teammates.
-- LTTS TECHgium 2026: SmartOps was one of 34 finalist teams selected from
-  62,000+ registrations across 540+ institutes. Do not claim Top 7 or winner.
-- Merged open-source contributions: Keras #22844, SciPy #25209, Matplotlib
-  #31707, and Statsmodels #9812.
-- LeetCode supplied evidence: Knight, 816 solved, 2,570 submissions, 351
-  active days.
-- Freelance/research work remains anonymous and problem-space-only unless Rahul
-  explicitly supplies disclosure permission and evidence.
+## Verified claims only
 
-## Visible virtual desktop content
+- **Amazon ML Challenge 2025 / Cyber Titans:** Rank 83, 45.35 SMAPE final
+  submission, Top 2%. Rahul led model development, training, submissions,
+  deployment, and AI/backend work with teammates.
+- **LTTS TECHgium 2026 / SmartOps:** one of 34 finalist teams from 62,000+
+  registrations across 540+ engineering institutes. Never claim Top 7 or winner.
+- **LeetCode:** Knight, 816 solved, 2,570 submissions, 351 active days in
+  supplied evidence. Use “800+ solved” when an exact static total would age.
+- **Merged PRs:** Keras #22844, SciPy #25209, Matplotlib #31707, Statsmodels
+  #9812.
+- **Freelance / research:** keep client names, private data, unpublished
+  outcomes, and unsupported publication/award claims private.
+- **Health-related work:** describe as research/prototyping only; never imply a
+  diagnosis tool, medical advice, or clinical validation.
 
-Portfolio documents live in `public/Users/Public/Documents/`:
+## Root-content rules
 
-- `Start Here.md`
-- `About Rahul.md`
-- `Selected Work/01–07 ... .md`
-- `Proof & Achievements/*.md`
-- `Private Work/Confidential Work.md`
-- `Contact Rahul.md`
-- approved resume PDF
+- Use clear, simple English. Explain the problem, Rahul's role, technical
+  choices, and a real constraint or outcome.
+- Keep external links opening in new tabs.
+- Use public project links and certificate verification links only when they
+  exist. Do not invent a demo, repository, client, screenshot, or result.
+- Keep the V4 information architecture: Hero → About → Experience & Proof →
+  Selected Work → More Projects → Contact → Archive.
+- The credentials tab and `/archive/` make evidence and verification links easy
+  to find without overwhelming the homepage.
 
-Use Markdown for new portfolio content so daedalOS's existing Marked app opens
-it inside the authentic OS. Use honest, plain English. External links must open
-in a new tab; `mailto:` opens the visitor's email client.
+## Build and deployment
 
-## Game Tour
+The root V4 source requires Node `14.21.3` and Yarn Classic `1.22.22` because
+that is the compatible upstream runtime. RahulOS/game retain their modern Node
+22 build. The GitHub Actions workflow switches runtimes and uploads `dist/`.
 
-- Source: `game-tour/`
-- Published runtime: `public/game-tour/`
-- daedalOS process: `GameTour` in `contexts/process/directory.ts`
-- Desktop/Start Menu shortcut: `RR Game Tour.url`
-- Guided route: `/game-tour/index.html?mode=guided`
-
-Keep only this game visible. The source has mouse/touch controls, keyboard
-controls, reset, muted-by-default sound, and project links back to the portfolio.
-
-## Local build and deployment
-
-```powershell
-cd R:\portfolio\site
-corepack enable
-$env:NODE_OPTIONS='--openssl-legacy-provider'
-corepack yarn install --frozen-lockfile
-
-cd game-tour
-npm ci
-npm run build
-
-cd ..
-corepack yarn build
-```
-
-The GitHub Pages workflow performs the same sequence and deploys `out/` to
-`rahulrathnavel.dev`. It uses `NODE_OPTIONS=--openssl-legacy-provider` because
-an upstream BrowserFS build dependency uses legacy OpenSSL hashing.
+See `README.md` for the exact local command sequence. Do not commit `public/`,
+`dist/`, `legacy-os/out/`, or `.game-tour-dist/`.
 
 ## Safety rules
 
-1. Preserve the upstream MIT notice and the Game Tour MIT notices.
-2. Do not commit Web3Forms keys or other secrets. The previous static form is
-   intentionally not part of this exact OS replacement; direct email remains
-   available from Contact Rahul.
-3. Do not invent achievements, clients, project results, screenshots, or demo
-   links.
-4. Build after every virtual filesystem change so desktop and Start Menu indexes
-   remain correct.
-5. Test with cleared site storage/IndexedDB when desktop shortcuts or positions
-   appear stale after an update.
+1. Preserve both upstream license/attribution paths.
+2. Do not commit Web3Forms keys or any other secrets.
+3. Do not modify `legacy-os/` or `game-tour/` for root-site requests.
+4. Build and inspect all three public routes before publishing.
+5. If a future feature needs a public claim that is not evidenced here, ask
+   Rahul for the link, screenshot, or permission before adding it.

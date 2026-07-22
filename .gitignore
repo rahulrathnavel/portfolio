@@ -1,21 +1,20 @@
-.next
-.swc
-tsconfig.tsbuildinfo
-certificates
-out
-
+# Project dependencies
+.cache
 node_modules
-/.node_modules-pre-daedalos-*
+yarn-error.log
+package-lock.json
 
-test-results
-playwright-report
-playwright/.cache
+# Build directory
+/public
+/dist
+/legacy-os/out
+/legacy-os/.next
+/game-tour/dist
+/.game-tour-dist
+.DS_Store
 
-public/private
-public/robots.txt
-public/rss.xml
-public/sitemap.xml
-public/.index/*
+.vscode/
 
-# Rahul's portfolio is represented by daedalOS's virtual Public desktop and
-# documents. These files are authored content, so they must remain versioned.
+# Nested applications keep their own dependency trees.
+/legacy-os/node_modules
+/game-tour/node_modules
