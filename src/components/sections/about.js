@@ -84,6 +84,7 @@ const StyledText = styled.div`
           display: block;
           width: 100%;
           height: 100%;
+          filter: none !important;
           object-fit: contain;
         }
       }
