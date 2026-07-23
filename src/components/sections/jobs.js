@@ -10,6 +10,23 @@ import { usePrefersReducedMotion } from '@hooks';
 const StyledJobsSection = styled.section`
   max-width: 700px;
 
+  .numbered-heading {
+    @media (max-width: 600px) {
+      align-items: flex-start;
+      width: auto;
+      white-space: normal;
+      line-height: 1.2;
+
+      &:before {
+        flex: 0 0 auto;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
   .inner {
     display: flex;
 
@@ -34,34 +51,23 @@ const StyledTabList = styled.div`
 
   @media (max-width: 600px) {
     display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 28px;
+    padding: 0 0 8px;
     overflow-x: auto;
-    width: calc(100% + 100px);
-    padding-left: 50px;
-    margin-left: -50px;
-    margin-bottom: 30px;
-  }
-  @media (max-width: 480px) {
-    width: calc(100% + 50px);
-    padding-left: 25px;
-    margin-left: -25px;
-  }
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 
-  li {
-    &:first-of-type {
-      @media (max-width: 600px) {
-        margin-left: 50px;
-      }
-      @media (max-width: 480px) {
-        margin-left: 25px;
-      }
+    &::-webkit-scrollbar {
+      height: 4px;
     }
-    &:last-of-type {
-      @media (max-width: 600px) {
-        padding-right: 50px;
-      }
-      @media (max-width: 480px) {
-        padding-right: 25px;
-      }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: var(--lightest-navy);
     }
   }
 `;
@@ -86,11 +92,30 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    min-height: 48px;
     padding: 0 15px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
     text-align: center;
+    touch-action: manipulation;
+    scroll-snap-align: start;
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: -2px;
+      left: 0;
+      height: 2px;
+      background: var(--green);
+      transform: scaleX(${({ isActive }) => (isActive ? 1 : 0)});
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
   }
 
   &:hover,
@@ -108,21 +133,14 @@ const StyledHighlight = styled.div`
   height: var(--tab-height);
   border-radius: var(--border-radius);
   background: var(--green);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
+  transform: translateY(
+    calc(${({ activeTabId }) => activeTabId} * var(--tab-height))
+  );
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
 
   @media (max-width: 600px) {
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
-    height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
+    display: none;
   }
 `;
 
@@ -247,7 +265,11 @@ const Jobs = () => {
       <h2 className="numbered-heading">Selected Experience &amp; Proof</h2>
 
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Experience and proof tabs" onKeyDown={e => onKeyDown(e)}>
+        <StyledTabList
+          role="tablist"
+          aria-label="Experience and proof tabs"
+          onKeyDown={e => onKeyDown(e)}
+        >
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { company } = node.frontmatter;
@@ -261,7 +283,8 @@ const Jobs = () => {
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
+                  aria-controls={`panel-${i}`}
+                >
                   <span>{company}</span>
                 </StyledTabButton>
               );
@@ -276,19 +299,30 @@ const Jobs = () => {
               const { title, url, company, range } = frontmatter;
 
               return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                <CSSTransition
+                  key={i}
+                  in={activeTabId === i}
+                  timeout={250}
+                  classNames="fade"
+                >
                   <StyledTabPanel
                     id={`panel-${i}`}
                     role="tabpanel"
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
+                    hidden={activeTabId !== i}
+                  >
                     <h3>
                       <span>{title}</span>
                       <span className="company">
                         &nbsp;@&nbsp;
-                        <a href={url} className="inline-link" target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={url}
+                          className="inline-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {company}
                         </a>
                       </span>

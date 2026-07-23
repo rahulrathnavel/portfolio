@@ -32,7 +32,7 @@ const StyledText = styled.div`
       display: flex;
       align-items: center;
       gap: 10px;
-      min-height: 54px;
+      min-height: 64px;
       padding: 9px 12px;
       border: 1px solid var(--lightest-navy);
       border-radius: var(--border-radius);
@@ -63,20 +63,29 @@ const StyledText = styled.div`
         transform: translateY(0);
       }
 
-      .skill-icon {
-        display: inline-flex;
+      .skill-icons {
+        display: flex;
         flex: 0 0 auto;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
+        gap: 5px;
+      }
+
+      .skill-icon {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        padding: 7px;
+        border: 1px solid var(--lightest-navy);
         border-radius: 9px;
-        color: var(--lightest-slate);
-        background: var(--skill-color);
-        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 18%), 0 5px 12px -8px var(--skill-color);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
+        background: var(--navy);
+        box-shadow: 0 7px 16px -12px var(--navy-shadow);
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
 
       .skill-name {
@@ -84,8 +93,12 @@ const StyledText = styled.div`
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       grid-template-columns: 1fr;
+
+      li {
+        min-height: 60px;
+      }
     }
   }
 `;
@@ -170,14 +183,14 @@ const About = () => {
   }, [prefersReducedMotion]);
 
   const skills = [
-    { name: 'Python', mark: 'Py', color: '#3776ab' },
-    { name: 'PyTorch', mark: 'PT', color: '#ee4c2c' },
-    { name: 'Hugging Face + Transformers', mark: 'HF', color: '#c99a06' },
-    { name: 'LLM Engineering (RAG + LangGraph)', mark: 'AI', color: '#6656d8' },
-    { name: 'FastAPI', mark: 'Fa', color: '#009688' },
-    { name: 'Docker', mark: 'DK', color: '#2496ed' },
-    { name: 'AWS + Terraform', mark: 'AW', color: '#ff9900' },
-    { name: 'Git + Linux', mark: 'GL', color: '#f05032' },
+    { name: 'Python', icons: ['python'] },
+    { name: 'PyTorch', icons: ['pytorch'] },
+    { name: 'Hugging Face + Transformers', icons: ['huggingface'] },
+    { name: 'LLM Engineering (RAG + LangGraph)', icons: ['langchain'] },
+    { name: 'FastAPI', icons: ['fastapi'] },
+    { name: 'Docker', icons: ['docker'] },
+    { name: 'AWS + Terraform', icons: ['aws', 'terraform'] },
+    { name: 'Git + Linux', icons: ['git', 'linux'] },
   ];
 
   return (
@@ -188,21 +201,26 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I am Rahul, an aspiring AI/ML software engineer who turns ideas into useful,
-              reliable systems across LLMs, retrieval, and backend engineering.
+              I am Rahul, an aspiring AI/ML software engineer who turns ideas
+              into useful, reliable systems across LLMs, retrieval, and backend
+              engineering.
             </p>
 
             <p>
-              I build early, learn from what fails, and keep complex technology clear for the people
-              using it. Here are the tools I work with:
+              I build early, learn from what fails, and keep complex technology
+              clear for the people using it. Here are the tools I work with:
             </p>
           </div>
 
           <ul className="skills-list">
-            {skills.map(({ name, mark, color }) => (
-              <li key={name} style={{ '--skill-color': color }}>
-                <span className="skill-icon" aria-hidden="true">
-                  {mark}
+            {skills.map(({ name, icons }) => (
+              <li key={name} title={name}>
+                <span className="skill-icons" aria-hidden="true">
+                  {icons.map(icon => (
+                    <span className="skill-icon" key={icon}>
+                      <img src={`/skills/${icon}.svg`} alt="" loading="lazy" />
+                    </span>
+                  ))}
                 </span>
                 <span className="skill-name">{name}</span>
               </li>
