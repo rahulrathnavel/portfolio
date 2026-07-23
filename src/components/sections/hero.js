@@ -65,7 +65,7 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [prefersReducedMotion]);
 
-  const one = <h1>Hi, my name is</h1>;
+  const one = <h1>Hi, I am</h1>;
   const two = <h2 className="big-heading">Rahul Rathnavel.</h2>;
   const three = <h3 className="big-heading">I build useful AI/ML systems.</h3>;
   const four = (

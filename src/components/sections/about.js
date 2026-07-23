@@ -22,21 +22,28 @@ const StyledAboutSection = styled.section`
 const StyledText = styled.div`
   ul.skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     padding: 0;
     margin: 20px 0 0;
-    overflow: hidden;
     list-style: none;
 
     li {
-      position: relative;
-      margin-bottom: 10px;
-      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 9px 12px;
+      border: 1px solid var(--lightest-navy);
+      border-radius: var(--border-radius);
+      background: var(--light-navy);
+      box-shadow: 0 6px 14px -12px var(--navy-shadow);
+      transition: var(--transition);
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
 
       &:before {
+        display: none;
         content: '▹';
         position: absolute;
         left: 0;
@@ -44,6 +51,41 @@ const StyledText = styled.div`
         font-size: var(--fz-sm);
         line-height: 12px;
       }
+
+      &:hover,
+      &:active {
+        border-color: var(--green);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px -16px var(--green);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      .skill-icon {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        color: var(--lightest-slate);
+        background: var(--skill-color);
+        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 18%), 0 5px 12px -8px var(--skill-color);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .skill-name {
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
     }
   }
 `;
@@ -128,14 +170,14 @@ const About = () => {
   }, [prefersReducedMotion]);
 
   const skills = [
-    'Python',
-    'PyTorch',
-    'Hugging Face + Transformers',
-    'LLM Engineering (RAG + LangGraph)',
-    'FastAPI',
-    'Docker',
-    'AWS + Terraform',
-    'Git + Linux',
+    { name: 'Python', mark: 'Py', color: '#3776ab' },
+    { name: 'PyTorch', mark: 'PT', color: '#ee4c2c' },
+    { name: 'Hugging Face + Transformers', mark: 'HF', color: '#c99a06' },
+    { name: 'LLM Engineering (RAG + LangGraph)', mark: 'AI', color: '#6656d8' },
+    { name: 'FastAPI', mark: 'Fa', color: '#009688' },
+    { name: 'Docker', mark: 'DK', color: '#2496ed' },
+    { name: 'AWS + Terraform', mark: 'AW', color: '#ff9900' },
+    { name: 'Git + Linux', mark: 'GL', color: '#f05032' },
   ];
 
   return (
@@ -146,27 +188,24 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I am Rahul, an aspiring AI/ML software engineer who enjoys turning messy problems into
-              working systems. My interest sits at the intersection of applied machine learning,
-              reliable software, and clear product experiences.
+              I am Rahul, an aspiring AI/ML software engineer who turns ideas into useful,
+              reliable systems across LLMs, retrieval, and backend engineering.
             </p>
 
             <p>
-              My public work ranges from retrieval systems and Android accessibility prototypes to
-              cloud incident workflows. I also take on carefully scoped freelance and research work;
-              when a project is private, I describe the engineering problem without exposing the
-              client, data, or unpublished implementation details.
-            </p>
-
-            <p>
-              My working style is simple: build early, measure honestly, and keep the result
-              understandable enough for people to use. Here are a few technologies I work with:
+              I build early, learn from what fails, and keep complex technology clear for the people
+              using it. Here are the tools I work with:
             </p>
           </div>
 
           <ul className="skills-list">
-            {skills.map((skill, i) => (
-              <li key={i}>{skill}</li>
+            {skills.map(({ name, mark, color }) => (
+              <li key={name} style={{ '--skill-color': color }}>
+                <span className="skill-icon" aria-hidden="true">
+                  {mark}
+                </span>
+                <span className="skill-name">{name}</span>
+              </li>
             ))}
           </ul>
         </StyledText>
