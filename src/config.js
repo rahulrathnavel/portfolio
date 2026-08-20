@@ -7,6 +7,10 @@ module.exports = {
 
   socialMedia: [
     {
+      name: 'LeetCode',
+      url: 'https://www.leetcode.com/rahulrathnavel',
+    },
+    {
       name: 'GitHub',
       url: 'https://github.com/rahulrathnavel',
     },
