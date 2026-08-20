@@ -22,7 +22,7 @@ type TerminalLine = {
 type NewTerminalLine = Omit<TerminalLine, "id">;
 
 const EMAIL_URL =
-  "https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavell5%40gmail.com&su=Hello%20Rahul";
+  "https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavelk%40gmail.com&su=Hello%20Rahul";
 const GITHUB_URL = "https://github.com/rahulrathnavel";
 const LEETCODE_URL = "https://leetcode.com/rahulrathnavel";
 const LINKEDIN_URL = "https://www.linkedin.com/in/rahulrathnavel/";
@@ -67,7 +67,7 @@ const FILES: Record<string, string> = {
   "achievements.md":
     "Proof points\n* Amazon ML Challenge 2025 - Rank 83 / Top 2%\n* TECHgium 2026 - National finalist / Top 1%\n* Maintainer-merged open-source contributions\nUse the Proof & Achievements folder for the full evidence.",
   "contact.txt":
-    "Email: rahulrathnavell5@gmail.com\nLinkedIn: linkedin.com/in/rahulrathnavel\nGitHub: github.com/rahulrathnavel",
+    "Email: rahulrathnavelk@gmail.com\nLinkedIn: linkedin.com/in/rahulrathnavel\nGitHub: github.com/rahulrathnavel",
   "lessons-learned.txt":
     "Build a working system early. Measure honestly. Fix what fails. Keep the result understandable enough for people to use.",
   "projects.md":

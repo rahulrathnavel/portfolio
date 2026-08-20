@@ -373,7 +373,7 @@ export const TASKBAR_HEIGHT = 30;
 export const PACKAGE_DATA = {
   alias: "Rahul Rathnavel Portfolio — Aspiring AI/ML Software Engineer",
   author: {
-    email: "rahulrathnavell5@gmail.com",
+    email: "rahulrathnavelk@gmail.com",
     name: "Rahul Rathnavel K",
     npub: "",
     url: "https://rahulrathnavel.dev",

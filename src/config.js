@@ -1,9 +1,9 @@
-const email = 'rahulrathnavell5@gmail.com';
+const email = 'rahulrathnavelk@gmail.com';
 
 module.exports = {
   email,
   emailUrl:
-    'https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavell5%40gmail.com&su=Hello%20Rahul',
+    'https://mail.google.com/mail/?view=cm&fs=1&to=rahulrathnavelk%40gmail.com&su=Hello%20Rahul',
 
   socialMedia: [
     {

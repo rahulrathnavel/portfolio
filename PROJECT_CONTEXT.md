@@ -69,7 +69,7 @@ Rahul explicitly asks:
 ## Canonical public profile
 
 - Public name: Rahul Rathnavel
-- Email: `rahulrathnavell5@gmail.com`
+- Email: `rahulrathnavelk@gmail.com`
 - GitHub: `https://github.com/rahulrathnavel`
 - LinkedIn: `https://www.linkedin.com/in/rahulrathnavel/`
 - LeetCode: `https://leetcode.com/rahulrathnavel`
