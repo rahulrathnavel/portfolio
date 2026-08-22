@@ -224,7 +224,7 @@ const Hero = () => {
         <Icon name="LeetCode" />
         <span>
           <span className="label">LEETCODE / CONSISTENCY</span>
-          <span className="stats">Knight · 853 solved · 360 active days</span>
+          <span className="stats">Knight · 850+ solved · 360+ active days</span>
         </span>
         <span className="cta">View profile ↗</span>
       </a>
@@ -237,7 +237,7 @@ const Hero = () => {
       >
         <img
           src="/leetcode-profile-view.png"
-          alt="Rahul's LeetCode profile showing Knight level, 853 solved problems, and 360 active days"
+          alt="Rahul's LeetCode profile showing Knight level, 850+ solved problems, and 360+ active days"
         />
       </a>
     </div>

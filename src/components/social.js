@@ -95,7 +95,7 @@ const StyledSocialList = styled.ul`
 `;
 
 const prompts = {
-  LeetCode: 'Knight level. 853 solved — consistency is my favorite pattern.',
+  LeetCode: 'Knight level. 850+ solved — consistency is my favorite pattern.',
   GitHub: 'See the code, experiments, and lessons behind the work.',
   Linkedin: 'Let’s connect, exchange ideas, and keep learning.',
 };
