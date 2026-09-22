@@ -15,5 +15,5 @@ url: "https://www.datacamp.com/certificate/DS0025618761485"
 - [MongoDB Associate Developer badge](https://www.credly.com/badges/b54f7a35-942c-477a-87eb-392a805c8f1a/print)
 - [NPTEL Data Analytics with Python](https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs17/Course/NPTEL25CS17S124360136204290084.pdf)
 - [Microsoft / Coursera Foundations of AI and Machine Learning](https://www.coursera.org/account/accomplishments/verify/G3BGZS77VVAW)
-- [NVIDIA certificate](https://learn.nvidia.com/certificates?id=38qr9xXrQIyKw2SgQbxWCA##)
-- [NVIDIA certificate](https://learn.nvidia.com/certificates?id=9bGDd7YMTByLKPBZbEoxwQ)
+- [NVIDIA Generative AI with Diffusion Models](https://learn.nvidia.com/certificates?id=38qr9xXrQIyKw2SgQbxWCA##)
+- [NVIDIA Disaster Risk Monitoring](https://learn.nvidia.com/certificates?id=9bGDd7YMTByLKPBZbEoxwQ)
